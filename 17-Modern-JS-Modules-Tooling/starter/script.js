@@ -1,4 +1,5 @@
-import cloneDeep from '../node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from "./node_modules/lodash-es/"
 
 // Importing module
 // console.log('Importing module'); //*Aun cuando lo pongamos antes
@@ -87,6 +88,8 @@ import cloneDeep from '../node_modules/lodash-es/cloneDeep.js';
 // // Import
 // const {addToCart} = require("./shoppingCart.js")
 
+import cloneDeep from 'lodash-es';
+
 //? Introduction to Command Line
 const state = {
   cart: [
@@ -102,4 +105,5 @@ const stateDeepClone = cloneDeep(state);
 state.user.loggedIn = false; //*La copia también sera falsa
 console.log(stateClone, stateDeepClone);
 //*JSON.parse(JSON.stringify(obj))
-// hola
+
+if (module.hot) module.hot.accept();
