@@ -117,3 +117,13 @@ class Person {
 }
 
 const jonas = new Person('Jonas');
+console.log('Jonas' ?? null);
+console.log(state.cart.find(el => el.quantity >= 2));
+Promise.resolve('TEST').then(res => console.log(res));
+
+// import 'core-js/stable';
+// import 'core-js/stable/array/find';
+// import 'core-js/stable/promise';
+
+//* Polifilling async functions
+import "regenerator-runtime/runtime" 

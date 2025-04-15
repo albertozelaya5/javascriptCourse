@@ -13,3 +13,27 @@ parcel ya usa Babel paara convertir codigo, igual se puede definir:
 - 🌐 Que navegadores deberinan ser compatibles
 
 Si entramos a la pagina de Babel, en la parte de plugins, tendrmeos plugins y features configurables un plugin es una función de js que podemos transpilar(convertir)
+
+Si nos vamos a este fragmento:
+```
+Promise.resolve('TEST').then((res)=>console.log(res));
+```
+Y lo vemos en los scripts del dist
+```
+Promise.resolve('TEST').then((res)=>console.log(res));
+```
+Estan iguales, esto debido a, como las features son realmente nuevas, no se puede convertir este codigo para que sea compatible con las versiones anteriores
+
+Tambien esta esta biblioteca llamad core-js que hace polyfill para que funcione con las versiones mas anteriores
+```
+// import 'core-js/stable';
+import 'core-js/stable/array/find';
+```
+Mediante la importacion uno asegura que archivos o metodos si convertir y caules no, *siempre siendo al inicio del modulo*
+
+Tambien usamos *regenerator-runtime* para:
+
+### Polifilling async functions
+```
+import "regenerator-runtime/runtime" 
+```
