@@ -55,6 +55,29 @@ import "regenerator-runtime/runtime"
 
 # Writing clean and Modern Javascript
 
-El _!_ es para declarar que es una imagen
+El _!_ es para declarar que es una imagen, sin ese "[texto] (imagen)" seria un enlace clickeable
 
 ![Readable code](./assets/image.png)
+
+- Codigo que todos puedan entendere
+- Soluciones demasiado inteligentes que sean demasiado complicadas
+- Nombres muy descriptivos, (variables sobre lo que contienen, funciones a corde a lo que hacen)
+
+![General principles](./assets/generalPrinciple.png)
+
+- No hacer cosas repetitivas
+- No contaminar los espacios principales, encapsular(agrupar datos en una estructura, ocultado su implementacion) en funciones, clases o modulos
+- Usar === en lugar de ==
+
+## ![Functions principles](./assets/functionsPrinciples.png)
+
+![OOP Principles](./assets/OOPPrinciples.png)
+
+- Method chaning es poner metodos dentro de las clases para hacerlas mas accesibles
+- No usar arrowFun dentro de obj, porque no tienen acceos a la this, pero si se pueden usar como alternativa al bind en callBack functions
+- Evitar codigo demasaido anidado (cosas dentro de otras)
+- En lugar de if else, usar varios if
+- Evitar usar for, o for of, en lugar usar array methods
+- Evitar callbacks async cada que se pueda, usar async await en lugar de then catch, evitar cosas muy anidadas
+- Si se pueden correr, hacerlo en paralelo, Promise.all, usar error handlers y promise rejections
+
