@@ -55,4 +55,6 @@ import "regenerator-runtime/runtime"
 
 # Writing clean and Modern Javascript
 
+El _!_ es para declarar que es una imagen
+
 ![Readable code](./assets/image.png)
