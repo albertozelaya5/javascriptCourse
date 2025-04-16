@@ -37,3 +37,8 @@ Tambien usamos *regenerator-runtime* para:
 ```
 import "regenerator-runtime/runtime" 
 ```
+
+# Para importar modulos js, en el index>head poner:
+```
+    <script type="module" defer src="script.js"></script>
+```
