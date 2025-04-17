@@ -70,7 +70,7 @@ const logBigExpenses = function (state, bigLimit) {
   });
   // .map(entry => entry.description.slice(-2)).join(" / ")
 
-  console.log('bigExpenses', bigExpenses);
+  console.log('bigExpenses', bigExpenses); //* Hacer estos consoles ya hacen la funcion impura
   const outputClean = state
     .reduce((acc, entry) => {
       acc +=
