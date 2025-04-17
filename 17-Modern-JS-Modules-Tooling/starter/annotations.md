@@ -53,7 +53,7 @@ import "regenerator-runtime/runtime"
     <script type="module" defer src="script.js"></script>
 ```
 
-# Writing clean and Modern Javascript
+## Writing clean and Modern Javascript
 
 El _!_ es para declarar que es una imagen, sin ese "[texto] (imagen)" seria un enlace clickeable
 
@@ -69,7 +69,7 @@ El _!_ es para declarar que es una imagen, sin ese "[texto] (imagen)" seria un e
 - No contaminar los espacios principales, encapsular(agrupar datos en una estructura, ocultado su implementacion) en funciones, clases o modulos
 - Usar === en lugar de ==
 
-## ![Functions principles](./assets/functionsPrinciples.png)
+![Functions principles](./assets/functionsPrinciples.png)
 
 ![OOP Principles](./assets/OOPPrinciples.png)
 
@@ -81,3 +81,51 @@ El _!_ es para declarar que es una imagen, sin ese "[texto] (imagen)" seria un e
 - Evitar callbacks async cada que se pueda, usar async await en lugar de then catch, evitar cosas muy anidadas
 - Si se pueden correr, hacerlo en paralelo, Promise.all, usar error handlers y promise rejections
 
+Los emojis al monento de escribir _slice, siplice_ etc, estos ocupan siempre 2 caracteres
+
+## Declarative and functional Javascript Principles
+
+Hay dos formas diferentes de escribir codigo, o sea paradigmas:
+
+### Imperativo
+
+Explicar a la pc como hacer las cosas, si hago un pastel explico paso a paso como lo realizo
+
+```
+const arr = [2,4,6,8]
+const doubled = []
+for(let i=0; i<arr.lenght; i++){
+    doubled[i] = arr[i] * 2
+}
+```
+
+### Declarativo
+
+Explicar a la pc que hacer, describe la forma en como deberia lograr ese resultado, seria describir como es el pastel
+
+```
+const arr = [2,4,6,8]
+const doubled = arr.map(n=>n*2)
+```
+
+### Functional programming
+
+Combinanndo funciones puras, exitando efectos secundarios y mutando data
+
+- Side Effect: mutar variables externas, hacer console logs, etc
+- Pure function: funciones sin efectos, no depende de variables externas(recibe y retorna los mismos inputs)
+
+#### Techniques
+- Tratar de evitar mutaciones de la data
+- Usar metodos que no produzcan efectos secundarios
+- Transformar data con map, filter, reduce
+- Evitar efectos secundarios en funciones
+- Usar ternarios, spread (...) y las comillas invertidas cada vez que sea posible
+
+Nada que ver pero, en un reduce, el acc siempre se debe retornar hasta el final
+```
+const reductor = objetito.reduce((acc, val, i) => {
+  acc[i] = val;
+  return acc;
+}, {});
+```
