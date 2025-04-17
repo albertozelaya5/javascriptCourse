@@ -136,3 +136,7 @@ const reductor = objetito.reduce((acc, val, i) => {
 Se usa _Object.freeze({})_ para hacer un obj inmutable, si tratamos de extenderlo nos dara error, tambien funciona en arrays ya que son objetos, pero solo congela el priemr nivel
 
 En el mundo real, se usan tecnicas como composing y currying para crear una cadena de operaciones innmutables
+
+- (observacion) Al clean code se le puede agregar la funcion de sumar los ingresos
+- Calcular gastos totales
+- Porcentaje de los ingresos
