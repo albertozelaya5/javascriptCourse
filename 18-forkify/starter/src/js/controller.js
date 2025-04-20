@@ -5,8 +5,6 @@ import recipeView from './views/recipeView.js';
 import 'core-js/stable'; //*Pollyfilling todo lo demás
 import 'regenerator-runtime/runtime'; //*Pollyfilling async/await
 
-const recipeContainer = document.querySelector('.recipe');
-
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////
@@ -24,6 +22,8 @@ const controlRecipes = async function () {
     // 2) Rendering recipe
     recipeView.render(model.state.recipe);
   } catch (err) {
+    recipeView.renderError();
+    // ${err} 💥💥💥
     console.log(err);
   }
 };
