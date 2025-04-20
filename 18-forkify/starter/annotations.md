@@ -4,9 +4,9 @@
 
 ### User story
 
-Es la descripcion de la aplicacion por medio de la perspectiva del usuario, por ejemplo
+Es la descripción de la aplicacion por medio de la perspectiva del usuario, por ejemplo
 
-- Como cliente, quierop buscar las recetas, para buscar nuevas ideas de comida
+- Como cliente, quiero buscar las recetas, para buscar nuevas ideas de comida
 - Como cliente, quiero ser capaz de actualizar el numero de servicios, asi puedo preparar para diferentes cantidades de personas
 - Como cliente, quiero un pineado de favoritos, para poder ver las recetas despues
 - Quiero crear mis propias recetas, asi puedo tenerlas todas en una misma app
@@ -14,13 +14,13 @@ Es la descripcion de la aplicacion por medio de la perspectiva del usuario, por 
 
 Para los programas de la vida real, se necesitan las peticiones del usuario (user stories) y tambien un diagrama o una manera de ver como va a funcionar la aplicacion en su flujo
 
-Para inicializar un projecto se pone
+Para inicializar un proyecto se pone
 
 ```
 npm init
 ```
 
-Para instalar la ultima version de parcel se usaria
+Para instalar la ultima version de parcel se usa>>ria
 
 ```
 npm i parcel -D, npm i parcel@2, npm i parcel@next -D
@@ -36,9 +36,9 @@ Cuando se usa sass, se referencia asi en el header:
     <link rel="stylesheet" href="src/sass/main.scss" />
 ```
 
-En parcel ya no se usa el _defer_, sino que por defecto ahora acepta el _type="module"_ que p=ermite el import y export y por defecto ya es defer
+En parcel ya no se usa el _defer_, sino que por defecto ahora acepta el _type="module"_ que permite el import y export y por defecto ya es defer
 
-Para mandar parametros en una URL se usa
+Para mandar parámetros en una URL se usa
 
 ```
 const params = new URLSearchParams({
@@ -48,4 +48,36 @@ const params = new URLSearchParams({
 });
 
 const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes?${params}`);
+```
+
+Para poner un elemento en diferentes posiciones de un html usamos:
+
+```
+    recipeContainer.insertAdjacentHTML('afterbegin', markup);
+```
+
+También se usa _innerHTML_ para obtener el valor html que esta dentro de ese Element
+Asimismo, si se agrupan varios html en uno solo se puede recibir mejor, con join:
+
+```
+          ${recipe.ingredients
+            .map(ing => {
+              return `<li class="recipe__ingredient">
+              <svg class="recipe__icon">
+                <use href="src/img/icons.svg#icon-check"></use>
+              </svg>
+              <div class="recipe__quantity">${ing.quantity}</div>
+              <div class="recipe__description">
+                <span class="recipe__unit">${ing.unit}</span>
+                ${ing.description}
+              </div>
+            </li>`;
+            })
+            .join('')}
+```
+### Pollyfilling
+También, para que haya compatibilidad con multiples navegadores, se hace con las bibliotecas core-js y regenerator-runtime, el primero es para cosas generales, y el segundo para _async/await_ features, se usan de esta manera:
+```
+import "core-js/stable"
+import "regenerator-runtime/runtime" //
 ```
