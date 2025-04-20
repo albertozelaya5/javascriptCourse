@@ -1,7 +1,7 @@
 // import icons from "../img/icons.svg" // Parcel 1
 import icons from 'url:../img/icons.svg'; // Parcel 1
-import "core-js/stable" //*Pollyfilling todo lo demás
-import "regenerator-runtime/runtime" //*Pollyfilling async/await
+import 'core-js/stable'; //*Pollyfilling todo lo demás
+import 'regenerator-runtime/runtime'; //*Pollyfilling async/await
 console.log(icons);
 
 const recipeContainer = document.querySelector('.recipe');
@@ -31,11 +31,15 @@ const renderSpinner = function (parentEl) {
 
 const showRecipe = async function () {
   try {
+    const id = window.location.hash.slice(1);
+
+    if (!id) return;
+
     // Loading Recipe
     renderSpinner(recipeContainer);
 
     const res = await fetch(
-      'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
+      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
       // 'https://forkify-api.herokuapp.com/api/v2/recipes/664c8f193e7aa067e94e84c2'
     ); //* El metodo json esta disponible en TODOS los objetos response, y esta promesa es uno de ellos
     const data = await res.json(); //*Que retorna OTRA promesa, que tenemos que esperar con await
@@ -163,4 +167,7 @@ const showRecipe = async function () {
     alert(err);
   }
 };
-showRecipe();
+//* Solo se va a correr cada que haya un cambio en la búsqueda
+['hashchange', 'load'].forEach(ev => window.addEventListener(ev, showRecipe));
+// window.addEventListener('hashchange', showRecipe);
+// window.addEventListener('load', showRecipe);

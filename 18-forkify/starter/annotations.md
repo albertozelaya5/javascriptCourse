@@ -75,9 +75,33 @@ Asimismo, si se agrupan varios html en uno solo se puede recibir mejor, con join
             })
             .join('')}
 ```
+
 ### Pollyfilling
+
 También, para que haya compatibilidad con multiples navegadores, se hace con las bibliotecas core-js y regenerator-runtime, el primero es para cosas generales, y el segundo para _async/await_ features, se usan de esta manera:
+
 ```
 import "core-js/stable"
 import "regenerator-runtime/runtime" //
+```
+
+## Listening for Load and hash change Events
+
+Se usa el href del anchor para llevar a otras partes del sitio dentro del html:
+
+```
+          <a href="#664c8f193e7aa067e94e8297">RECIPE</a>
+```
+
+También se usa _window.location.hash_ para obtener le # de la dirección de la url de nuestra propia pagina
+
+Para captar el estado cada que cambia la url, y cada que carga la pagina se usan:
+
+```
+window.addEventListener('hashchange', showRecipe);
+window.addEventListener('load', showRecipe);
+```
+O cuando se tienen varios eventos que se quieren usar con event handler se puede hacer asi:
+```
+['hashchange', 'load'].forEach(ev => window.addEventListener(ev, showRecipe));
 ```
