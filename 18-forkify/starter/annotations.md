@@ -134,3 +134,20 @@ Cuando se esta dentro de una clase, se puede asignar información de esta manera
 ```
 
 Para asi luego acceder desde cualquier parte de la clase como _this.#data_, tampoco importa el orden de los métodos, pueden usarse antes o después de ser creados
+
+### The fractional npm Library (Se usara fracty)
+
+Se usa para presentar los números como fracciones, tipo _1.5_ a _1/2_
+Estas dos librerías comenzaron con CommonJS, y ahora para importarlo a ESModules se debe de transformar de esto
+
+```
+var fracty = require('fracty') || var Fraction = require('fractional').Fraction
+```
+
+A esto:
+
+```
+import fractional from "fracty" || import {Fraction} from "fractional"
+```
+
+Recuerda, en las clases se pueden llamar funciones antes y después de ser declaradas
