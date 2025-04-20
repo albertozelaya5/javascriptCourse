@@ -1,5 +1,5 @@
-import icons from 'url:../../img/icons.svg'; // Parcel 1
 import fractional from 'fracty';
+import icons from 'url:../../img/icons.svg'; // Parcel 1
 
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
@@ -27,6 +27,10 @@ class RecipeView {
     this.#parentElement.innerHTML = '';
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   };
+
+  addHandlerRender(handler) {
+    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+  }
 
   #generateMarkup() {
     return `        

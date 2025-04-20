@@ -2,7 +2,6 @@ import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 
 // import icons from "../img/icons.svg" // Parcel 1
-import icons from 'url:../img/icons.svg'; // Parcel 1
 import 'core-js/stable'; //*Pollyfilling todo lo demás
 import 'regenerator-runtime/runtime'; //*Pollyfilling async/await
 
@@ -26,12 +25,11 @@ const controlRecipes = async function () {
     recipeView.render(model.state.recipe);
   } catch (err) {
     console.log(err);
-    alert(err);
   }
 };
 //* Solo se va a correr cada que haya un cambio en la búsqueda
-['hashchange', 'load'].forEach(ev =>
-  window.addEventListener(ev, controlRecipes)
-);
-// window.addEventListener('hashchange', controlRecipes);
-// window.addEventListener('load', controlRecipes);
+const init = function () {
+  recipeView.addHandlerRender(controlRecipes);
+};
+
+init(); //*Se llama aquí porque aquí se maneja la lógica del MVC

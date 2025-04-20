@@ -207,3 +207,19 @@ const timeout = function (s) {
 Y se mete en un _const res = await Promise.race([fetch(url), timeout(10)])_ para dependiendo del resultado, mandar un error por timeout
 
 Cuando se rechaza una promesa con el _new Promise Reject_, esta inmediatamente lo manda al catch mas cercano, también al usar ese _new Promise((resolve, reject)=>{})_ lo que retorna es dependiendo si la promesa se cumple o se rechaza
+
+## Event Handlers in MVC: Publisher - Suscribe Pattern
+
+Design Patterns en programación son como soluciones standards a ciertos tipos de problemas
+En el PSP, el publisher es una parte del código que sabe cuando reaccionar, y el suscriber es la otra parte que quiere reaccionar(el controlador)
+
+![PSP](./courseImages/PSP.png)
+
+Es básicamente, se manda el eventHandler a la parte de la vista, y cuando un evento ocurra, se manda a llamar la lógica del controlador, y no se manda directamente para que se siga ese patron de la no existencia uno del otro
+```
+const init = function () {
+  recipeView.addHandlerRender(controlRecipes);
+};
+
+init();
+```
