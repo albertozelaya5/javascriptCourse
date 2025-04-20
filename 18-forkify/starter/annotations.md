@@ -226,3 +226,5 @@ init();
 
 ## Implementing Error and Success Messages
 El throw new Error es donde se origina el error, el throw Error es para redireccionarlo
+
+## Implementing search Results
