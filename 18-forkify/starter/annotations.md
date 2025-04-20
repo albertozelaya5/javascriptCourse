@@ -151,3 +151,30 @@ import fractional from "fracty" || import {Fraction} from "fractional"
 ```
 
 Recuerda, en las clases se pueden llamar funciones antes y después de ser declaradas
+
+### ¿Qué son ESModules y CommonJS?
+
+**ESModules (ESM)** y **CommonJS (CJS)** son dos sistemas diferentes para importar y exportar módulos en JavaScript:
+
+| Característica           | ESModules (ESM)                            | CommonJS (CJS)                                  |
+| ------------------------ | ------------------------------------------ | ----------------------------------------------- |
+| **Sintaxis**             | `import` / `export`                        | `require` / `module.exports`                    |
+| **Soporte en navegador** | Nativo (moderno, sin bundler)              | No soportado directamente en navegador          |
+| **Ejecución**            | Estática (analiza imports antes de correr) | Dinámica (los `require()` se ejecutan en orden) |
+| **Uso típico**           | Frontend (moderno) / también en Node.js    | Node.js (clásico, antes de ESModules)           |
+| **Ejemplo**              | `import x from './x.js'`                   | `const x = require('./x')`                      |
+
+En ES6 Modules, cuando se usa export default, al darle import le ponemos el nombre de queramos, ejemplo:
+```
+export default new RecipeView();
+import recipeView from './views/recipeView.js';
+```
+También, para importar todo el archivo se usa *
+```
+import * as model from './model.js';
+```
+Y si son funciones declaradas, se importan como objetos
+```
+export const hola = function(){}
+import {hola} from "../"
+```
