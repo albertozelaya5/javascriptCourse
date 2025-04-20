@@ -101,7 +101,26 @@ Para captar el estado cada que cambia la url, y cada que carga la pagina se usan
 window.addEventListener('hashchange', showRecipe);
 window.addEventListener('load', showRecipe);
 ```
+
 O cuando se tienen varios eventos que se quieren usar con event handler se puede hacer asi:
+
 ```
 ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, showRecipe));
 ```
+
+## The MVC Architecture
+
+Por que es importante la arquitectura?
+
+- La estructura, es la forma en la que organizamos nuestro código (modulos, clases y funciones)
+- Maintainability: Pensamos que le proyecto nunca se termina, y para mejorarlo en el futuro debemos hacerlo fácil de entender, para que también sea escalable
+- Expandability: La opción de poner nuevas cosas en el futuro
+
+Pero cuando se hace mas grande, es difícil mantenerlo asi por nuestra cuenta, en lugar de eso usamos estructuras ya establecidas como MVC, MVP, Flux, etc.
+
+![architectureMap](./courseImages/image.png)
+![MVCMap](./courseImages/MVCarchi.png)
+
+Por ejemplo, al pasar algo con el usuario, esto llega al controlador, que distribuye las tareas en caso le toque al modelo, o a la vista actualizar los datos mostrados
+
+Luego si el modelo ocupa hacer una petición se la mandara al controller, que este a su vez hará la lógica de mostrarlo en la vista, el _Model_ y el _View_ nunca se tocan ni saben de la existencia del otro
