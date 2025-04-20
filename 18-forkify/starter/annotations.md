@@ -165,16 +165,45 @@ Recuerda, en las clases se pueden llamar funciones antes y después de ser decla
 | **Ejemplo**              | `import x from './x.js'`                   | `const x = require('./x')`                      |
 
 En ES6 Modules, cuando se usa export default, al darle import le ponemos el nombre de queramos, ejemplo:
+
 ```
 export default new RecipeView();
 import recipeView from './views/recipeView.js';
 ```
-También, para importar todo el archivo se usa *
+
+También, para importar todo el archivo se usa \*
+
 ```
 import * as model from './model.js';
 ```
+
 Y si son funciones declaradas, se importan como objetos
+
 ```
 export const hola = function(){}
 import {hola} from "../"
 ```
+
+## Helpers and Configuration Files
+
+En el config.js se ponen las constantes que usaran en todo el programa, las que son responsables de definir la data de la aplicación, usando uppercase para las constantes:
+
+```
+export const API_URL = 'https://forkify-api.herokuapp.com/api/v2/recipes';
+```
+
+Para retornar los errores al otro scope, se usa _throw err_ asi se propaga, asimismo, se maneja un timeout correcto con un promise, de manera asíncrona, Asi:
+
+```
+const timeout = function (s) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error(`Request took too long! Timeout after ${s} second`));
+    }, s * 1000);
+  });
+};
+```
+
+Y se mete en un _const res = await Promise.race([fetch(url), timeout(10)])_ para dependiendo del resultado, mandar un error por timeout
+
+Cuando se rechaza una promesa con el _new Promise Reject_, esta inmediatamente lo manda al catch mas cercano, también al usar ese _new Promise((resolve, reject)=>{})_ lo que retorna es dependiendo si la promesa se cumple o se rechaza

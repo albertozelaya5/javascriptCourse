@@ -1,15 +1,12 @@
+import { API_URL } from './config';
+import { getJson } from './helpers/helpers';
 export const state = {
   recipe: {},
 };
 
 export const loadRecipe = async function (id) {
   try {
-    const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-    ); //* El metodo json esta disponible en TODOS los objetos response, y esta promesa es uno de ellos
-    const data = await res.json(); //*Que retorna OTRA promesa, que tenemos que esperar con await
-
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    const data = await getJson(`${API_URL}/${id}`);
 
     const { recipe } = data.data;
     state.recipe = {
@@ -22,7 +19,8 @@ export const loadRecipe = async function (id) {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
-  } catch (error) {
-    alert(error);
+  } catch (err) {
+    // Temp error handling
+    console.log(`${err} 💥💥💥`);
   }
 };
