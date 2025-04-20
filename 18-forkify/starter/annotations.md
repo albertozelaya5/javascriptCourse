@@ -123,4 +123,14 @@ Pero cuando se hace mas grande, es difícil mantenerlo asi por nuestra cuenta, e
 
 Por ejemplo, al pasar algo con el usuario, esto llega al controlador, que distribuye las tareas en caso le toque al modelo, o a la vista actualizar los datos mostrados
 
-Luego si el modelo ocupa hacer una petición se la mandara al controller, que este a su vez hará la lógica de mostrarlo en la vista, el _Model_ y el _View_ nunca se tocan ni saben de la existencia del otro
+Luego si el modelo ocupa hacer una petición se la mandara al controller, que este a su vez hará la lógica de mostrarlo en la vista, el _Model_ y el _View_ nunca se tocan ni saben de la existencia del otro.
+
+Cuando se esta dentro de una clase, se puede asignar información de esta manera:
+
+```
+  render(data) {
+    this.#data = data; //*Cuando se llama, guarda la data que se le da en esa variable privada
+  }
+```
+
+Para asi luego acceder desde cualquier parte de la clase como _this.#data_, tampoco importa el orden de los métodos, pueden usarse antes o después de ser creados
