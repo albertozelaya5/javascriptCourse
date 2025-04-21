@@ -288,3 +288,7 @@ preview__link--active
   </svg>
 </div>
 ```
+También usamos
+```
+if (module.hot) module.hot.accept();
+```
