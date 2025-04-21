@@ -216,6 +216,7 @@ En el PSP, el publisher es una parte del código que sabe cuando reaccionar, y e
 ![PSP](./courseImages/PSP.png)
 
 Es básicamente, se manda el eventHandler a la parte de la vista, y cuando un evento ocurra, se manda a llamar la lógica del controlador, y no se manda directamente para que se siga ese patron de la no existencia uno del otro
+
 ```
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
@@ -225,6 +226,32 @@ init();
 ```
 
 ## Implementing Error and Success Messages
+
 El throw new Error es donde se origina el error, el throw Error es para redireccionarlo
 
 ## Implementing search Results
+
+Closest se usa para buscar hacia arriba en el árbol del DOM, como padres, si se quiere buscar hermanos seria closest y luego querySelector
+
+Ahora bien, como se quiere tener el valor de un hijo dentro del evento submit del form, se hace lo siguiente:
+
+```
+  addHandlerSearch(handler) {
+    this.#parentEl.addEventListener('submit', function (e) {
+      e.preventDefault();
+      handler();
+    });
+  }
+```
+
+Asi se previene que se recargue, y luego obteniendo el valor del padre con:
+
+```
+  #parentEl = document.querySelector('.search');
+  getQuery() {
+    const query =  this.#parentEl.querySelector('.search__field').value; //*Como primero se almacena el valor, por eso luego no se limpia
+    this.#clearInput()
+    return query
+  }
+```
+Se hace la búsqueda con el valor deseado

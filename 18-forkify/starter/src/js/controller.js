@@ -1,5 +1,6 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
+import searchView from './views/searchView';
 
 // import icons from "../img/icons.svg" // Parcel 1
 import 'core-js/stable'; //*Pollyfilling todo lo demás
@@ -27,9 +28,27 @@ const controlRecipes = async function () {
     console.log(err);
   }
 };
+
+const controlSearchResults = async function () {
+  try {
+    // 1) Get search query
+    const query = searchView.getQuery();
+    if (!query) return;
+
+    // 2) load search results
+    await model.loadSearchResults(query);
+
+    // 2) Render results
+    console.log(model.state.search.results);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 //* Solo se va a correr cada que haya un cambio en la búsqueda
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  searchView.addHandlerSearch(controlSearchResults);
 };
 
 init(); //*Se llama aquí porque aquí se maneja la lógica del MVC
