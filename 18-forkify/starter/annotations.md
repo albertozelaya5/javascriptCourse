@@ -254,4 +254,20 @@ Asi se previene que se recargue, y luego obteniendo el valor del padre con:
     return query
   }
 ```
+
 Se hace la búsqueda con el valor deseado
+
+## Implementing search results: Part 2
+
+Cuando se extiende una clase, también se extienden sus valores, mientras no sean puestos con _#_, pero si son normales o con convención \_\_\_ al inicio del nombre, se puede
+
+### 🔍 ¿Qué pasa exactamente en esta línea?
+
+```js
+const markup = this._generateMarkup();
+```
+
+- En la clase View, esta línea llama a un método llamado \_generateMarkup().
+- Como View no define ese método, JavaScript sube en la cadena y ve si una clase - hija (como RecipeView) lo ha implementado.
+- Como RecipeView sí lo define, ese es el método que se usa.
+
