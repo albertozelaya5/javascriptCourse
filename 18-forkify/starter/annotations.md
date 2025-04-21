@@ -271,3 +271,20 @@ const markup = this._generateMarkup();
 - Como View no define ese método, JavaScript sube en la cadena y ve si una clase - hija (como RecipeView) lo ha implementado.
 - Como RecipeView sí lo define, ese es el método que se usa.
 
+Ahora, para importar imágenes e iconos en parcel se usa esta sintaxis, con el _url:_ al inicio del from:
+
+```
+import icons from 'url:../../img/icons.svg'; // Parcel 1
+```
+
+Tomaremos este código luego:
+
+```
+preview__link--active
+
+<div class="preview__user-generated">
+  <svg>
+    <use href="${icons}.svg#icon-user"></use>
+  </svg>
+</div>
+```
