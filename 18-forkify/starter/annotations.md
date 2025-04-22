@@ -288,7 +288,22 @@ preview__link--active
   </svg>
 </div>
 ```
+
 También usamos
+
 ```
 if (module.hot) module.hot.accept();
+```
+
+## Implementing Pagination - Part 1
+
+Slice no incluye el ultimo valor, por lo que si es slice(0,10) seria del primer, al décimo elemento.
+Se toma desde el primer hasta el décimo valor, o sea _(pagina1 - 1) _ 10 = primerValor*, *page*10 = ultimoValor*, eso es lo que se pone en el slice
+ 
+```
+export const getSearchResultsPage = function (page) {
+  const start = (page - 1) * state.search.resultsPerPage; //0 valor inicial
+  const end = page * state.search.resultsPerPage; //9 valor final
+  return state.search.results.slice(start, end);
+};
 ```
