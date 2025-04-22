@@ -299,7 +299,7 @@ if (module.hot) module.hot.accept();
 
 Slice no incluye el ultimo valor, por lo que si es slice(0,10) seria del primer, al décimo elemento.
 Se toma desde el primer hasta el décimo valor, o sea _(pagina1 - 1) _ 10 = primerValor*, *page*10 = ultimoValor*, eso es lo que se pone en el slice
- 
+
 ```
 export const getSearchResultsPage = function (page) {
   const start = (page - 1) * state.search.resultsPerPage; //0 valor inicial
@@ -308,4 +308,6 @@ export const getSearchResultsPage = function (page) {
 };
 ```
 
-*if (module.hot) module.hot.accept()* Muchas veces este código puede dejar cacheado la data
+_if (module.hot) module.hot.accept()_ Muchas veces este código puede dejar cacheado la data
+
+Se usa _Math.ceil(num)_ para devolver el entero mas lejano, por ejemplo si tengo un 4.2, me dará un 5
