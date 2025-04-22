@@ -307,3 +307,5 @@ export const getSearchResultsPage = function (page) {
   return state.search.results.slice(start, end);
 };
 ```
+
+*if (module.hot) module.hot.accept()* Muchas veces este código puede dejar cacheado la data
