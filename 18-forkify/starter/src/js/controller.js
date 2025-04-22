@@ -43,9 +43,10 @@ const controlSearchResults = async function () {
     // 2) load search results
     await model.loadSearchResults(query);
 
+    //*Aquí es para que se muestren los resultados la buscar
     // 3) Render results
-
-    resultsView.render(model.getSearchResultsPage(5));
+    // resultsView.render(mode.state.search.results);
+    resultsView.render(model.getSearchResultsPage());
 
     // 4) Render initial pagination buttons
     paginationView.render(model.state.search);
@@ -54,10 +55,21 @@ const controlSearchResults = async function () {
   }
 };
 
+const controlPagination = function(gotoPage){
+  //* Aquí se implementan los datos para aplicar la pagination
+  // 3) Render NEW results
+  // resultsView.render(mode.state.search.results);
+  resultsView.render(model.getSearchResultsPage(gotoPage));
+
+  // 4) Render NEW initial pagination buttons
+  paginationView.render(model.state.search);
+}
+
 //* Solo se va a correr cada que haya un cambio en la búsqueda
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandlerClick(controlPagination)
 };
 
 init(); //*Se llama aquí porque aquí se maneja la lógica del MVC
