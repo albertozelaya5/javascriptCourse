@@ -43,6 +43,7 @@ const controlSearchResults = async function () {
     // 2) load search results
     await model.loadSearchResults(query);
 
+    //*Aquí es para que se muestren los resultados la buscar
     // 3) Render results
     // resultsView.render(mode.state.search.results);
     resultsView.render(model.getSearchResultsPage());
@@ -55,6 +56,7 @@ const controlSearchResults = async function () {
 };
 
 const controlPagination = function(gotoPage){
+  //* Aquí se implementan los datos para aplicar la pagination
   // 3) Render NEW results
   // resultsView.render(mode.state.search.results);
   resultsView.render(model.getSearchResultsPage(gotoPage));
