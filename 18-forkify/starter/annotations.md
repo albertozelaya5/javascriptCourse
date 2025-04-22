@@ -311,3 +311,5 @@ export const getSearchResultsPage = function (page) {
 _if (module.hot) module.hot.accept()_ Muchas veces este código puede dejar cacheado la data
 
 Se usa _Math.ceil(num)_ para devolver el entero mas lejano, por ejemplo si tengo un 4.2, me dará un 5
+
+Se usa *git branch -m* para cambiar el nombre de una rama local
