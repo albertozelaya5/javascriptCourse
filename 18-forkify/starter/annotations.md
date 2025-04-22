@@ -231,7 +231,7 @@ El throw new Error es donde se origina el error, el throw Error es para redirecc
 
 ## Implementing search Results
 
-Closest se usa para buscar hacia arriba en el árbol del DOM, como padres, si se quiere buscar hermanos seria closest y luego querySelector
+_Element.closest()_ se usa para buscar hacia arriba en el árbol del DOM, o sea padres, como padres, si se quiere buscar hermanos seria closest y luego querySelector
 
 Ahora bien, como se quiere tener el valor de un hijo dentro del evento submit del form, se hace lo siguiente:
 
@@ -312,4 +312,16 @@ _if (module.hot) module.hot.accept()_ Muchas veces este código puede dejar cach
 
 Se usa _Math.ceil(num)_ para devolver el entero mas lejano, por ejemplo si tengo un 4.2, me dará un 5
 
-Se usa *git branch -m* para cambiar el nombre de una rama local
+Se usa _git branch -m_ para cambiar el nombre de una rama local
+
+Se crea una conexión entre el DOM y el código, usando los `custom data attributes`
+
+### Dataset Attributes
+Se usan los dataset para guardar datos en el DOM
+como strings, se usa de esta forma:
+```
+<div data-user-id="123" data-role="admin"></div>
+const div = document.querySelector("div");
+console.log(div.dataset.userId); // "123"
+console.log(div.dataset.role);   // "admin"
+```

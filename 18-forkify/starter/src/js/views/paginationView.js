@@ -3,6 +3,18 @@ import icons from 'url:../../img/icons.svg'; // Parcel 1
 
 class PaginationView extends View {
   _parentElement = document.querySelector('.pagination');
+
+  addHandlerClick(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn--inline');
+      console.log(btn);
+      if (!btn) return;
+
+      const gotoPage = +btn.dataset.goto;
+      handler(gotoPage);
+    });
+    handler();
+  }
   _generateMarkup() {
     const curPage = this._data.page;
     const numPages = Math.ceil(
@@ -12,7 +24,7 @@ class PaginationView extends View {
     const _generateMarkupButton = function (cur) {
       if (curPage > cur) {
         return `
-        <button class="btn--inline pagination__btn--prev">
+        <button data-goto="${cur}" class="btn--inline pagination__btn--prev">
           <svg class="search__icon">
             <use href="${icons}#icon-arrow-left"></use>
           </svg>
@@ -22,7 +34,7 @@ class PaginationView extends View {
       }
       if (curPage < cur) {
         return `
-        <button class="btn--inline pagination__btn--next">
+        <button data-goto="${cur}" class="btn--inline pagination__btn--next">
         <span>Page ${cur}</span>
         <svg class="search__icon">
           <use href="${icons}#icon-arrow-right"></use>
