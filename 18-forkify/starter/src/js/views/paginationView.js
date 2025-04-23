@@ -7,13 +7,11 @@ class PaginationView extends View {
   addHandlerClick(handler) {
     this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--inline');
-      console.log(btn);
       if (!btn) return;
 
       const gotoPage = +btn.dataset.goto;
       handler(gotoPage);
     });
-    // handler();
   }
   _generateMarkup() {
     const curPage = this._data.page;
@@ -44,7 +42,6 @@ class PaginationView extends View {
       }
     };
 
-    console.log(numPages);
     // Page 1, and there are other pages
     if (curPage === 1 && numPages > 1) {
       return _generateMarkupButton(curPage + 1);
@@ -65,9 +62,9 @@ class PaginationView extends View {
 
     // Page 1, and there are NO other pages
     console.log(curPage);
-    if (curPage === 1 && curPage === numPages) {
-      return '';
-    }
+    return '';
+    // if (curPage === 1 && curPage === numPages) {
+    // }
   }
 }
 
