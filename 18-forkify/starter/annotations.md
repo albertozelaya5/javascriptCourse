@@ -325,3 +325,12 @@ const div = document.querySelector("div");
 console.log(div.dataset.userId); // "123"
 console.log(div.dataset.role);   // "admin"
 ```
+
+## Project Planning II
+### 💻 Que es core functionality?
+En JavaScript, `funcionalidad central o núcleo del lenguaje` se refiere a las capacidades básicas que proporciona el propio lenguaje, sin depender de APIs externas como el DOM o Node.js.
+
+- Para esta parte, se cambiaran las porciones de las recetas (changing the servings), escuchando los eventos de los botones, y cargando de nuevo las porciones
+- Cuando se guarde en marcadores, queremos que se sume el seleccionado a la lista de marcadores, y actualizar el botón en al receta, recargandola
+- Cuando se de click a esos marcadores, cargar el marcador seleccionado
+- También, cargar estos bookMarks en el navegador, para asi leerlos a la proxima vez
