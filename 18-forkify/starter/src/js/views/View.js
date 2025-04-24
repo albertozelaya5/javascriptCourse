@@ -15,9 +15,6 @@ export default class View {
   }
 
   update(data) {
-    if (!data || (Array.isArray(data) && data.length === 0))
-      return this.renderError();
-
     this._data = data; //*Cuando se llama, guarda la data que se le da en esa variable privada
     const newMarkup = this._generateMarkup();
     // Creara un rango y luego convertirá el string a DOM

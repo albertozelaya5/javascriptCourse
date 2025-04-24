@@ -388,3 +388,9 @@ Y _nodeValue_, si es texto retornara eso mismo, y _trim()_ para quitar de un tex
     });
     ```
 ````
+
+Nuevamente 
+```
+const id = window.location.hash.slice(1);
+```
+Para obtener la ubicación exacta
