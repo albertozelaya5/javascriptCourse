@@ -317,8 +317,10 @@ Se usa _git branch -m_ para cambiar el nombre de una rama local
 Se crea una conexión entre el DOM y el código, usando los `custom data attributes`
 
 ### Dataset Attributes
+
 Se usan los dataset para guardar datos en el DOM
 como strings, se usa de esta forma:
+
 ```
 <div data-user-id="123" data-role="admin"></div>
 const div = document.querySelector("div");
@@ -327,10 +329,62 @@ console.log(div.dataset.role);   // "admin"
 ```
 
 ## Project Planning II
+
 ### 💻 Que es core functionality?
+
 En JavaScript, `funcionalidad central o núcleo del lenguaje` se refiere a las capacidades básicas que proporciona el propio lenguaje, sin depender de APIs externas como el DOM o Node.js.
 
 - Para esta parte, se cambiaran las porciones de las recetas (changing the servings), escuchando los eventos de los botones, y cargando de nuevo las porciones
 - Cuando se guarde en marcadores, queremos que se sume el seleccionado a la lista de marcadores, y actualizar el botón en al receta, recargandola
 - Cuando se de click a esos marcadores, cargar el marcador seleccionado
 - También, cargar estos bookMarks en el navegador, para asi leerlos a la proxima vez
+
+### Developing a DOM updating Algorithm
+
+El método `Array.from()` se utiliza para **convertir objetos similares a arrays** (como `NodeList`, `Map`, `Set`, entre otros) en **arrays reales y completamente funcionales**.
+
+```
+Array.from(arrayLike, mapFn);
+const arr = Array.from({ length: 9 }, (_, i) => i);
+console.log(arr); // [0, 1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+- El primer arg es el objeto iterable o similar a array que se quiere convertir
+- EL seg una función de mapeo opcional, similar a la que se usa en .map(), que puede transformar cada elemento durante la conversión. _(el, i, els)=>{}_
+
+Los _nodos_ es cualquier unidad dentro del árbol del DOM. Existen varios tipos de nodos, no solo los elementos HTML, como el Element, text, Comment, DocumentFragment
+Ahora los atributos de un elemento son propiedades del mismo, no nodos como tal
+
+Ahora, se usa document.createRange().createContextualFragment("texto html") para pasar un texto en html a un DOM element, y el querySelectorAll para tener una lista de nodos de todos los elementos al que hace referencia:
+
+```
+  const newMarkup = this._generateMarkup();
+  // Creara un rango y luego convertirá el string a DOM
+  const newDOM = document.createRange().createContextualFragment(newMarkup);
+  const newElements = Array.from(newDOM.querySelectorAll('*'));
+```
+
+También se usa _firstChild_ para obtener el primer hijo de un elemento, que en caso sea un botón seria texto.
+Y _nodeValue_, si es texto retornara eso mismo, y _trim()_ para quitar de un texto los espacios iniciales y finales
+
+````
+    newElements.forEach((newEl, i) => {
+      const curEl = curELements[i];
+
+      // UPDATE changed TEXT isEqualNode booleano si ambos nodos son iguales, nodeValue devuelve texto en caso sea inputText
+      if (
+        !newEl.isEqualNode(curEl) &&
+        newEl.firstChild?.nodeValue.trim() !== ''
+      )
+        curEl.textContent = newEl.textContent;
+
+      // UPDATE changed ATTRIBUTES
+      if (!newEl.isEqualNode(curEl)) {
+        console.log(curEl.attributes); //* lista nodeMap de los atributos
+        Array.from(newEl.attributes).forEach(attr =>
+          curEl.setAttribute(attr.name, attr.value) //*setAttribute pide un nombre y el valor del atributo
+        );
+      }
+    });
+    ```
+````

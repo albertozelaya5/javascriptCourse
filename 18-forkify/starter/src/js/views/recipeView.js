@@ -15,10 +15,7 @@ class RecipeView extends View {
     this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--update-servings');
       if (!btn) return;
-      console.log(btn);
       const { updateTo } = btn.dataset; //* data-update-to cuando hay un guion lo convierte a mayúscula, SIEMPRE en strings
-
-      console.log(this._data, updateTo);
 
       if (+updateTo > 0) handler(+updateTo);
     });
