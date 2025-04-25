@@ -389,10 +389,42 @@ Y _nodeValue_, si es texto retornara eso mismo, y _trim()_ para quitar de un tex
     ```
 ````
 
-Nuevamente 
+Nuevamente
+
 ```
 const id = window.location.hash.slice(1);
 ```
+
 Para obtener la ubicación exacta
 
 ## Implementing Bookmarks
+
+para añadir un bookmark, se usan los mismos métodos de información en el model, conexión en el controller y vista en los view, tenemos el método de suma y el de eliminación
+
+### Suma - addBookmark
+
+para la suma simplemente definimos un arreglo de bookmarks, en el cual ponemos el marcado dentro de ese arreglo, y si es igual al id actual que se muestra se mostrara la clase de fill en el DOM.
+
+Para quitarlo, hacemos esto:
+
+```
+export const deleteBookmark = function (id) {
+  // Delete bookmark
+  const index = state.bookmarks.find(el => el.id === id);
+  state.bookmarks.splice(index, 1);
+
+  // Mark current recipe as bookmarked
+  if (recipe.id === state.recipe.id) state.recipe.bookmarked = false;
+};
+```
+
+Luego se debe marcar, en caso de que no este marcado, y si lo está, desmarcarlo, por ello se debe usar un if else en lugar de dos condiciones
+
+```
+const controlAddBookmark = function () {
+  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
+  else model.deleteBookmark(model.state.recipe.id);
+
+  recipeView.update(model.state.recipe);
+}
+```

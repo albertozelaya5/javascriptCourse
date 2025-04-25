@@ -80,7 +80,9 @@ const controlPagination = function (gotoPage) {
 };
 
 const controlAddBookmark = function () {
-  model.addBookmark(model.state.recipe);
+  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
+  else model.deleteBookmark(model.state.recipe.id);
+
   recipeView.update(model.state.recipe);
 };
 //* Solo se va a correr cada que haya un cambio en la búsqueda
