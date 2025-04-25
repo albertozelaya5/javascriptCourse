@@ -394,3 +394,5 @@ Nuevamente
 const id = window.location.hash.slice(1);
 ```
 Para obtener la ubicación exacta
+
+## Implementing Bookmarks
