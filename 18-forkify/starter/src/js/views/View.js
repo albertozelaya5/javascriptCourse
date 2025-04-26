@@ -3,12 +3,14 @@ import icons from 'url:../../img/icons.svg'; // Parcel 1
 export default class View {
   _data;
 
-  render(data) {
+  render(data, render = true) {
     if (!data || (Array.isArray(data) && data.length === 0))
       return this.renderError();
 
     this._data = data; //*Cuando se llama, guarda la data que se le da en esa variable privada
     const markup = this._generateMarkup();
+
+    if (!render) return markup;
     this._clear();
 
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
@@ -35,7 +37,7 @@ export default class View {
       // UPDATE changed ATTRIBUTES
       if (!newEl.isEqualNode(curEl)) {
         Array.from(newEl.attributes).forEach(attr =>
-          curEl.setAttribute(attr.name, attr.value)
+          curEl.setAttribute(attr.name, attr.value),
         );
       }
     });
