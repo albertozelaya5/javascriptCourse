@@ -1,8 +1,8 @@
 import View from './View';
 
-class ResultsView extends View {
-  _parentElement = document.querySelector('.results');
-  _errorMessage = `No recipes found for your query! Please try again ;)`;
+class BookmarksView extends View {
+  _parentElement = document.querySelector('.bookmarks__list');
+  _errorMessage = `No bookmarks yet. Find a nice recipe and bookmark it :)`;
   _message = '';
 
   _generateMarkup() {
@@ -15,6 +15,7 @@ class ResultsView extends View {
 
   _generateMarkupPrieview(result) {
     const id = window.location.hash.slice(1);
+
     return `
       <li class="preview">
         <a class="preview__link ${
@@ -34,4 +35,4 @@ class ResultsView extends View {
   }
 }
 
-export default new ResultsView();
+export default new BookmarksView();

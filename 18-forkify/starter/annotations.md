@@ -428,3 +428,27 @@ const controlAddBookmark = function () {
   recipeView.update(model.state.recipe);
 }
 ```
+
+## Implementing Bookmarks - Part 2
+
+### Recapitulacion de comandos
+Para inicializar un proyecto se pone
+
+```
+npm init // -y si se quiere poner todas las opciones por defecto
+```
+
+Para instalar la ultima version de parcel se usa>>ria
+
+```
+npm i parcel -D, npm i parcel@2, npm i parcel@next -D // -D es como decir --save-dev
+```
+*--save-dev* significa que solo sera como una herramienta de desarrollo
+
+Con @ para la version, el @next es para decir la version preliminar, el D es lo mismo que --save-dev
+
+Tambien se usan:
+```
+npm i library@latest // Para instalar su ultima version
+```
+==
