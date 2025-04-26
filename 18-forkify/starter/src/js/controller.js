@@ -24,16 +24,15 @@ const controlRecipes = async function () {
 
     // 0) Update results view to mark selected search result
     resultsView.update(model.getSearchResultsPage());
+
+    // 1) Updating Bookmarks view
     bookmarksView.update(model.state.bookmarks);
 
-    // 1) Loading Recipe
+    // 2) Loading Recipe
     await model.loadRecipe(id); //* La async function retorna una promesa que es esperada por otra async function, como no retorna nada, no la guardamos en ninguna variable
 
-    // 2) Rendering recipe
+    // 3) Rendering recipe
     recipeView.render(model.state.recipe);
-
-    // TEST
-    controlServings(4);
   } catch (err) {
     recipeView.renderError();
     // ${err} 💥💥💥
@@ -93,7 +92,13 @@ const controlAddBookmark = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 //* Solo se va a correr cada que haya un cambio en la búsqueda
+
+const controlBookmarks = function () {
+  bookmarksView.render(model.state.bookmarks);
+};
+
 const init = function () {
+  bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);

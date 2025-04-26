@@ -454,3 +454,5 @@ Tambien se usan:
 ```
 npm i library@latest // Para instalar su ultima version
 ```
+
+## Storing bookMarks with localStorage
