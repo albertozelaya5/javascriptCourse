@@ -456,3 +456,18 @@ npm i library@latest // Para instalar su ultima version
 ```
 
 ## Storing bookMarks with localStorage
+
+## Uploading a new Recipe
+
+Se usa el metodo _bind_ en la funcion, ya que la keyword _this_ al estar dentro de un eventListener, su this es el elemento al que apunta, pro ejemplo:
+
+```
+  toggleWindow() {
+    this._overlay.classList.toggle('hidden');
+    this._window.classList.toggle('hidden');
+  }
+
+  _addHandlerShowWindow() { //*Si no se usara bind, this seria el this._btnOpen
+    this._btnOpen.addEventListener('click', this.toggleWindow.bind(this));
+  }
+```

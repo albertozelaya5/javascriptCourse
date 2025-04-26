@@ -4,6 +4,7 @@ import searchView from './views/searchView';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
+import addRecipeView from './views/addRecipeView.js';
 
 // import icons from "../img/icons.svg" // Parcel 1
 import 'core-js/stable'; //*Pollyfilling todo lo demás
