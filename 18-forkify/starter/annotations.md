@@ -471,3 +471,23 @@ Se usa el metodo _bind_ en la funcion, ya que la keyword _this_ al estar dentro 
     this._btnOpen.addEventListener('click', this.toggleWindow.bind(this));
   }
 ```
+
+Tambien, conocemos el fomrulario `form` que tiene un evento especial llamado submit, que envia toda la informacion de sus hijos input, pero en lugar de sacar value por value, usaremos un nuevo API llamado _new Form_
+
+### Uso de New Form
+
+tal como la API de _Intl_, se ocupa crear una instancia new Form(form) y dentro del constructor (primer aguemnto), se mete el label form, y para su uso se usa en un spread dentro de un Array, para obtener su info, asi:
+
+```
+const dataArr = [...new FormData(this)]; // Nos dara como un Object.entries()
+const data = Object.fromEntries(dataArr)
+```
+
+Ahora si lo queremos en un objeto, se usa `Object.fromEntries()` para convertir de un entries [[titulo, valor]] a un objeto
+
+En lugar de la manera tradicional:
+
+```
+// Dentro del addEventListener del form
+e.target.querySelector(".siu").value //*se busca el hijo dentro del scope de ese padre form
+```
