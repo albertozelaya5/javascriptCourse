@@ -547,12 +547,52 @@ Y se vera reflejado al hacer hover al nombre de la funcion, con el patron _@keyw
 ### Implementing and feature ideas: Challenges 😎
 
 Improvements:
+
 - Display number of pages between the pagination buttons
 - Ability to sort search results by duration or number of ingredients
 - Perform ingredient validation in view, before submitting the form // por ejemplo advertir que no es un buen formato o consideraciones a tener
 - Improve recipe ingredient input: separate in multiple fields and allow more than 6 ingredients.
 
 Aditional features:
+
 - Shopping list feature: button on recipe to add ingredients to a list // poner un boton de agregar ingredientes que los desplegara todos en una lista
 - Weekly meal planning feature: assign recipes to the next 7 days and show on a weekly calendar //dropDown menu
 - Get nutrition data on each ingredient from spoonacular API (https://spoonacular.com/food-api) and calculate total calores of recipe
+
+## Simple Deployment with Netlify
+
+se usa parcel build index.html para agrupar todo el codigo en una sola carpeta llamada dist("distribution")
+para desinstalar paquetes de npm se puede usar _npm un_ en lugar de todo el _npm uninstall_
+Tambien, en la version 2, se usan estos detalles en el package.json para evitar problemas con parcel
+
+```
+  "default": "index.html", // En el primer nivel
+  "build": "parcel build index.html --dist-dir ./dist" // son comandos para distribution directory y luego en donde estara esa carpeta ./dist, dentro del objeto script
+```
+
+Para subir el proyecto se puede usar netlify o surge, que este ultimo no ocupa ni iniciar sesion
+[surge](https://surge.sh/)
+Tambien, al subir los sitios automaticamente se incluye un certificado SSL, y los assets son implementados con una content delievery network _CDN_, lo que significa que se reparten al rededor del mundo, y asi cuando un usuario lo use, se apegara al servidor mas cercano a su region haciendo la carga mas rapida
+
+## Deploying with Git
+
+usaremos git para el control de versiones, y para subir el repositorio se usa:
+
+```
+git init // inicializa el repo
+git config --global user.name albertozelaya5 // para marcar que este usuario con este correo es el que clona y hace cambios en los reps
+git config --global user.email albertozelaya5
+git status //para ver el estado de los commits o seguimiento de archivos
+git add -A
+git reset --hard HEAD //para descartar los cambios no commiteados
+git log
+git reset --hard numeroDeCommit //para descartar los cambios no commiteados
+git branch nuevaBranch
+git checkout commit // cambiar entre commits
+git merge cambiosNuevaRama
+git remote -v // mira el enlace que tiene mi repo
+git branch -M nuevo_nombre // cambia el nombre de la rama, el -M es que fuerza ese cambio, si fuera -m no dejaria si hay una ya existente
+git push origin nombreRama
+```
+
+En el bloc de notas, se usa `q` de _quit_ o :`q`, tambien se puede crear una plantilla como ofrece github para primero hacer el repositorio, clonarlo, trabjar ahi y hacer las modificaciones
