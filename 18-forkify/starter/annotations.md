@@ -504,10 +504,20 @@ Ahora, se debe mandar el objeto con la informacion como un _POST_, para esto pri
     });
     ```
 ````
+
 como segundo argumento, se envia un objeto llamado `headers`, que son fragmetnos de de texto, que contienen informacion sobre la solicitud en si.
-Por ultimo, se envia otro objeto llamado `body`, donde finalmente se envia la informacion en formato texto, por ello se usa  *JSON.stringify(uploadData)*
+Por ultimo, se envia otro objeto llamado `body`, donde finalmente se envia la informacion en formato texto, por ello se usa _JSON.stringify(uploadData)_
 
 Truco para poner propiedades opcionales:
+
 ```
 ...(recipe.key && { key: recipe.key }),
+```
+
+### window.history API
+*window.history* es la api del historial del navegador, y para cambiar le enlace actual sin recargar la pagina se usa *pushState*
+```
+    // Change ID in UWL
+    window.history.pushState(null, '', `${model.state.recipe.id}`);
+    // window.history.back() // Para ir a la pagina anterior
 ```

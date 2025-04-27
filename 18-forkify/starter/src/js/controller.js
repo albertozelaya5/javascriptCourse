@@ -38,7 +38,6 @@ const controlRecipes = async function () {
   } catch (err) {
     recipeView.renderError();
     // ${err} 💥💥💥
-    console.log(err);
   }
 };
 
@@ -102,24 +101,29 @@ const controlBookmarks = function () {
 const controlAddRecipe = async function (newRecipe) {
   try {
     // Show loading spinner
-    addRecipeView.renderSpinner()
-    
+    addRecipeView.renderSpinner();
+
     // Upload the new recipe data
     await model.uploadRecipe(newRecipe);
-    console.log(model.state.recipe);
 
     // Render recipe
     recipeView.render(model.state.recipe);
 
     // Success message
-    addRecipeView.renderMessage()
+    addRecipeView.renderMessage();
+
+    // Render bookmark view
+    bookmarksView.render(model.state.bookmarks);
+
+    // Change ID in UWL
+    window.history.pushState(null, '', `${model.state.recipe.id}`);
+    // window.history.back()
 
     // Close form window
     setTimeout(function () {
       addRecipeView.toggleWindow();
     }, MODAL_CLOSE_SEC * 1000);
   } catch (err) {
-    console.error('💥', err);
     addRecipeView.renderError(err.message);
   }
 };

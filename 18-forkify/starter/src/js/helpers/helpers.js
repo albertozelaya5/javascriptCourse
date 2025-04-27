@@ -7,7 +7,30 @@ const timeout = function (s) {
   });
 };
 
-export const getJson = async function (url) {
+export const AJAX = async function (url, uploadData = undefined) {
+  try {
+    const fetchPro = uploadData
+      ? fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(uploadData),
+        })
+      : fetch(url);
+
+    const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]); //* El metodo json esta disponible en TODOS los objetos response, y esta promesa es uno de ellos
+    const data = await res.json(); //*Que retorna OTRA promesa, que tenemos que esperar con await
+
+    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+/* export const getJson = async function (url) {
   try {
     const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]); //* El metodo json esta disponible en TODOS los objetos response, y esta promesa es uno de ellos
     const data = await res.json(); //*Que retorna OTRA promesa, que tenemos que esperar con await
@@ -37,3 +60,4 @@ export const sendJson = async function (url, uploadData) {
     throw err;
   }
 };
+ */
