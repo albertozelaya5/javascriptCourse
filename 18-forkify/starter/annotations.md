@@ -599,3 +599,26 @@ En el bloc de notas, se usa `q` de _quit_ o :`q`, tambien se puede crear una pla
 
 ## Setting up continous integration with netlify
 Tambien se puede vincular un repositorio de gitub para que cuando se haga push, automaticamente se haga un deploy
+
+## Videos nuevos que me faltan por ver
+*Seccion 5*
+- The rest of AI Tools(ChatGPT, Copilot, Cursor Ai, etc)
+- Solving CHALLENGE #2 With Ai
+
+*Seccion 8*
+- Memory Management: Garbage Collection
+
+*Seccion 9*
+- New Operations to Make Sets Usefull!
+
+*Seccion 11*
+- The New findLast and findLastIndex Methods
+- CHALLENGE #4
+- Array Grouping
+- Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with
+
+*Seccion 12*
+- Fixing a Sorting Bug
+
+*Seccion 13*
+- Fixing a Small Scrolling Bug
