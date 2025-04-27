@@ -596,3 +596,6 @@ git push origin nombreRama
 ```
 
 En el bloc de notas, se usa `q` de _quit_ o :`q`, tambien se puede crear una plantilla como ofrece github para primero hacer el repositorio, clonarlo, trabjar ahi y hacer las modificaciones
+
+## Setting up continous integration with netlify
+Tambien se puede vincular un repositorio de gitub para que cuando se haga push, automaticamente se haga un deploy
