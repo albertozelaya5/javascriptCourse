@@ -491,3 +491,23 @@ En lugar de la manera tradicional:
 // Dentro del addEventListener del form
 e.target.querySelector(".siu").value //*se busca el hijo dentro del scope de ese padre form
 ```
+
+Ahora, se debe mandar el objeto con la informacion como un _POST_, para esto primero se setea la data como lo necesite la API, seguido, se debe hacer una peticion con el fetch de toda la vida, pero con estos cambios:
+
+````
+    const fetchPro = fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // le decimos que el tipoo de contenido a mandar sera en formato json
+      },
+      body: JSON.stringify(uploadData),
+    });
+    ```
+````
+como segundo argumento, se envia un objeto llamado `headers`, que son fragmetnos de de texto, que contienen informacion sobre la solicitud en si.
+Por ultimo, se envia otro objeto llamado `body`, donde finalmente se envia la informacion en formato texto, por ello se usa  *JSON.stringify(uploadData)*
+
+Truco para poner propiedades opcionales:
+```
+...(recipe.key && { key: recipe.key }),
+```
