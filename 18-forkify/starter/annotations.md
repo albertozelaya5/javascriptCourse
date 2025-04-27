@@ -515,9 +515,44 @@ Truco para poner propiedades opcionales:
 ```
 
 ### window.history API
-*window.history* es la api del historial del navegador, y para cambiar le enlace actual sin recargar la pagina se usa *pushState*
+
+_window.history_ es la api del historial del navegador, y para cambiar le enlace actual sin recargar la pagina se usa _pushState_
+
 ```
     // Change ID in UWL
     window.history.pushState(null, '', `${model.state.recipe.id}`);
     // window.history.back() // Para ir a la pagina anterior
 ```
+
+## Final Considerations
+
+Hay una manera de documentar funciones que se llama `JS DOCS`
+[url], (jsdoc.app)
+Se tiene un estandar para la documentacion de funciones, al poner el comando `/**  */` justo encima de una funcion, se abrira un snippet con los args de la funcion, donde podemos especificar que tipo de datos esperan, y si son opcionales los ponemos como _[render = true]_ entre corchetes:
+
+```
+  /**
+   * Render the received object to the DOM
+   * @param {Object | Object[]} data The data to be rendered (e.g. recipe)
+   * @param {boolean} [render = true] If false, create markup string instead of rendering to the DOM
+   * @returns {undefined | string} A markup string is returned if render=false
+   * @this {Object} View instance
+   * @author Alberto Zelaya
+   * @todo finish implementation
+   */
+```
+
+Y se vera reflejado al hacer hover al nombre de la funcion, con el patron _@keyword {[valueExpected if optional []]} description_
+
+### Implementing and feature ideas: Challenges 😎
+
+Improvements:
+- Display number of pages between the pagination buttons
+- Ability to sort search results by duration or number of ingredients
+- Perform ingredient validation in view, before submitting the form // por ejemplo advertir que no es un buen formato o consideraciones a tener
+- Improve recipe ingredient input: separate in multiple fields and allow more than 6 ingredients.
+
+Aditional features:
+- Shopping list feature: button on recipe to add ingredients to a list // poner un boton de agregar ingredientes que los desplegara todos en una lista
+- Weekly meal planning feature: assign recipes to the next 7 days and show on a weekly calendar //dropDown menu
+- Get nutrition data on each ingredient from spoonacular API (https://spoonacular.com/food-api) and calculate total calores of recipe

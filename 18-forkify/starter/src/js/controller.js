@@ -115,9 +115,9 @@ const controlAddRecipe = async function (newRecipe) {
     // Render bookmark view
     bookmarksView.render(model.state.bookmarks);
 
-    // Change ID in UWL
+    // Change ID in URL
     window.history.pushState(null, '', `${model.state.recipe.id}`);
-    // window.history.back()
+    // window.history.back() //*volver a la pagina anterior
 
     // Close form window
     setTimeout(function () {
