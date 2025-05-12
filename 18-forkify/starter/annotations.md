@@ -587,7 +587,7 @@ git add -A
 git reset --hard HEAD //para descartar los cambios no commiteados
 git log
 git reset --hard numeroDeCommit //para descartar los cambios no commiteados
-git reset --hard HEAD~1
+git reset --hard HEAD~1 //* para descartar el ultimo commit
 git branch nuevaBranch
 git checkout commit // cambiar entre commits
 git merge cambiosNuevaRama
