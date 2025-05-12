@@ -594,6 +594,7 @@ git merge cambiosNuevaRama
 git remote -v // mira el enlace que tiene mi repo
 git branch -M nuevo_nombre // cambia el nombre de la rama, el -M es que fuerza ese cambio, si fuera -m no dejaria si hay una ya existente
 git push origin nombreRama
+git switch -c nombreRama //* lo mismo que checkout pero con switch
 ```
 
 En el bloc de notas, se usa `q` de _quit_ o :`q`, tambien se puede crear una plantilla como ofrece github para primero hacer el repositorio, clonarlo, trabjar ahi y hacer las modificaciones
