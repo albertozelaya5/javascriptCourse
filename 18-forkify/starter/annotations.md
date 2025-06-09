@@ -472,6 +472,19 @@ Se usa el metodo _bind_ en la funcion, ya que la keyword _this_ al estar dentro 
   }
 ```
 
+> Condicionar en caso se tenga un array vacío
+
+Como un array.length === 0 cuenta como un falsy value, se puede evaluar asi:
+
+```
+if (!items.length)
+  return (
+    <p class="stats">
+      <em>Start adding some items yo your packing list 🚀</em>
+    </p>
+  );
+```
+
 Tambien, conocemos el fomrulario `form` que tiene un evento especial llamado submit, que envia toda la informacion de sus hijos input, pero en lugar de sacar value por value, usaremos un nuevo API llamado _new Form_
 
 ### Uso de New Form
@@ -600,27 +613,35 @@ git switch -c nombreRama //* lo mismo que checkout pero con switch
 En el bloc de notas, se usa `q` de _quit_ o :`q`, tambien se puede crear una plantilla como ofrece github para primero hacer el repositorio, clonarlo, trabjar ahi y hacer las modificaciones
 
 ## Setting up continous integration with netlify
+
 Tambien se puede vincular un repositorio de gitub para que cuando se haga push, automaticamente se haga un deploy
 
 ## Videos nuevos que me faltan por ver
-*Seccion 5*
+
+_Sección 5_
+
 - The rest of AI Tools(ChatGPT, Copilot, Cursor Ai, etc)
 - Solving CHALLENGE #2 With Ai
 
-*Seccion 8*
+_Sección 8_
+
 - Memory Management: Garbage Collection
 
-*Seccion 9*
-- New Operations to Make Sets Usefull!
+_Sección 9_
 
-*Seccion 11*
+- New Operations to Make Sets Useful!
+
+_Sección 11_
+
 - The New findLast and findLastIndex Methods
 - CHALLENGE #4
 - Array Grouping
 - Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with
 
-*Seccion 12*
+_Sección 12_
+
 - Fixing a Sorting Bug
 
-*Seccion 13*
+_Sección 13_
+
 - Fixing a Small Scrolling Bug
