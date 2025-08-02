@@ -99,3 +99,53 @@ Al definir primero Promise.resolve(), sera la primera tarea en el microtask queu
 ```
 3, 32, 11, 4, 9
 ```
+
+## Hoisting
+
+```
+console.log(foo);
+var foo = 'foo'; <= Esto dará undefined
+```
+
+- El hoisting permite usar funciones y variables antes de que se hayan declarado
+- El programa donde se corre JS, divide las declaraciones de las asignaciones, y eleva las declaraciones en la parte superior del scope, antes de la ejecución
+
+```
+// Declaracion
+var foo;
+let bar;
+
+// Asignacion
+foo = 'foo';
+bar = 'bar';
+```
+
+> [!IMPORTANT]
+> Por lo general, no es recomendable usar una variable antes de que sea declarada.
+
+Las variables declaradas con let y const también reciben hoisting, pero no son inicializadas con un valor por defecto. Acceder a una variable declarada con let o const antes de que sea declarada resulta en un ReferenceError:
+
+```
+console.log(foo); // Uncaught ReferenceError: Cannot access 'foo' before initialization
+let foo = 'bar';  // lo mismo para variables declaradas con const
+```
+
+Ahora, con let y const pasa algo distinto, ya que si bien estas suben al top del scope, desde su declaración hasta su asignación están dentro de un objeto llamado TDZ(o temporal dead zone), en donde lanza error en caso de ser usadas antes de ser asignadas
+
+Las declaraciones de funciones también son sometidas a hoisting. Esto nos permite llamar a funciones antes de que sean definidas.
+Con las funciones de expresión pasa algo similar a const y let(ya que son const y let), ya que hasta no ser asignadas, dará ese error de referencia
+
+Se declara la variable pero no se le asigna un valor
+
+```
+foo(); // Uncaught TypeError: foo is not a function
+var foo = function () { }
+
+bar(); // Uncaught ReferenceError: Cannot access 'bar' before initialization
+let bar = function () { }
+
+baz(); // Uncaught ReferenceError: Cannot access 'baz' before initialization
+const baz = function () { }
+```
+
+Las ventajas de las funciones declaradas es la parte de la abstracción, que seria concentrarse en lo realmente importante, ahora si una declaración es demasiado grande que se hace difícil leer el resto del archivo, lo mejor seria extraerla a su propio modulo
