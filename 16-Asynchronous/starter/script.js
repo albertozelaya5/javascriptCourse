@@ -66,7 +66,7 @@ const renderCountry = function (data, className = '') {
 // };
 
 // getCountryData('portugal'); //*Pasan al mismo tiempo y a su tiempo
-// //* Si los quisiéramos hacer en orden, tendriamos que encadenarlas, solo al obtener la data de una pedir la otra etc
+// //* Si los quisiéramos hacer en orden, tendríamos que encadenarlas, solo al obtener la data de una pedir la otra etc
 // getCountryData('usa');
 // getCountryData('germany');
 
@@ -118,7 +118,7 @@ const renderCountry = function (data, className = '') {
 //* Si los quisiéramos hacer en orden, tendríamos que encadenarlas, solo al obtener la data de una pedir la otra etc
 // getCountryData('usa');
 // getCountryAndNeighbour('usa');
-
+/
 // console.log(Math.floor(4.4)); //* Retorna el decimal mas pequeño
 // console.log(Math.ceil(4.4)); //* Retorna el decimal mas grande
 //!
@@ -347,11 +347,11 @@ GOOD LUCK 😀
 // lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
 // Promisifying setTimeout
-// const wait = function (seconds) {
-//   return new Promise(function (resolve) {
-//     setTimeout(resolve, seconds * 1000);
-//   }); //*retornara una promesa que se puede thenear
-// };
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  }); //*retornara una promesa que se puede thenear
+};
 
 // wait
 //   .then(() => {
@@ -378,7 +378,7 @@ GOOD LUCK 😀
 //   }, 1000);
 // }, 1000);
 
-// Promise.resolve('abc').then(x => console.log(x));
+Promise.resolve('abc').then(x => console.log(x));
 //* El arg de then solo funciona cuando se retornara algo
 //* reject no tiene then ya que no retorna una promesa ni nada
 // Promise.reject(new Error('Problem!')).catch(x => console.log(x));
@@ -462,11 +462,11 @@ TEST DATA: Images in the img folder. Test the error handler by passing a wrong i
 GOOD LUCK 😀
 */
 
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
-  }); //*retornara una promesa que se puede thenear
-};
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   }); //*retornara una promesa que se puede thenear
+// };
 
 // const imgContainer = document.querySelector('.images');
 
@@ -642,7 +642,7 @@ console.log('1: Will get location');
 //   .then(res => console.log("ey vo", res[0]))
 //   .catch(err => console.error("error race", err)); //*siempre se ejecuta
 
-// //* Promise.allSettled, similar al all, solo que este aunque uno no de retornara todo, y el all si uno no da se detiene
+// //* Promise.allSettled, similar al all, solo que este aunque uno no de, retornara todo, y el all si uno no da se detiene
 // //* Promise.resolve, crea una promesa que automáticamente se resuelve
 // Promise.allSettled([
 //   //*ES2020
