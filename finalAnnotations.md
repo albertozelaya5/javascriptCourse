@@ -59,7 +59,7 @@ function uwu(file){
 ## Text area and selects examples
 
 > [!NOTE]
-Todos estos se accede su valor mediante `document.querySelector(".nombre").value`
+> Todos estos se accede su valor mediante `document.querySelector(".nombre").value`
 
 ### Input type text
 
@@ -92,3 +92,11 @@ Todos estos se accede su valor mediante `document.querySelector(".nombre").value
   <option value="argentina">Argentina</option>
 </select>
 ```
+
+## Sort
+
+Por defecto, `sort()` en JavaScript no ordena números correctamente, sino que los trata como **cadenas de texto** basándose en los valores de sus caracteres **Unicode**. Por eso, `"10"` va antes que `"2"`.
+
+Para ordenar números de forma correcta, necesitas proporcionar una **función de comparación** como `(a, b) => a - b`.
+
+[Ver sort.js](./practice-files/sort.js)
