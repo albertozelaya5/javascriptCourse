@@ -88,7 +88,56 @@ async function fetchData(url) {
 fetchData("https://api.example.com/data").then((data) => console.log(data));
 ```
 
-## Debounce => Anti rebote
+## Debounce
+
+Esperar a que el usuario deje de hacer algo antes de ejecutar una acción.
+Cuando se deja de hacer una acción por X tiempo, ejecuto una sola vez
+
+> Por ejemplo
+
+- Hacer una petición por cada tecla que escriba el usuario 🚩
+- Si el usuario busca en un input, esperar 500ms para ejecutar una sola petición ✅
+
+> [!CAUTION]
+> Sin debounce
+
+```js
+input.addEventListener("input", (e) => {
+  buscar(e.target.value);
+});
+```
+
+> [!IMPORTANT]
+> Con debounce
+
+```js
+function debounce(fn, delay) {
+  let timer;
+
+  return function (...args) {
+    clearTimeout(timer); //* Cada que escribe, se cancela el timeOut anterior, con su petición
+    timer = setTimeout(() => {
+      fn(...args); //* Se ejecuta la function de la llamada a la API, con los argumentos "e" del addEventListener
+    }, delay); //* Después de tanto tiempo
+  };
+}
+```
+
+```js
+function buscar(valor) {
+  console.log("Buscando:", valor);
+}
+
+const buscarDebounced = debounce(buscar, 500);
+
+input.addEventListener("input", (e) => {
+  buscarDebounced(e.target.value);
+});
+```
+
+Al escribir cada tecla se hace una llamada
+
+## => Anti rebote
 
 Evitar correr funciones muy frecuentemente, especialmente `scroll` or `resize` events
 
@@ -102,6 +151,6 @@ function debounce(func, delay) {
 }
 window.addEventListener(
   "resize",
-  debounce(() => console.log("Resized!"), 300)
+  debounce(() => console.log("Resized!"), 300),
 );
 ```
