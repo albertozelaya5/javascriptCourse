@@ -620,12 +620,12 @@ Tambien se puede vincular un repositorio de gitub para que cuando se haga push, 
 
 _Sección 5_
 
-- The rest of AI Tools(ChatGPT, Copilot, Cursor Ai, etc)
-- Solving CHALLENGE #2 With Ai
+- The rest of AI Tools(ChatGPT, Copilot, Cursor Ai, etc) ✅
+- Solving CHALLENGE #2 With Ai ✅
 
 _Sección 8_
 
-- Memory Management: Garbage Collection
+- Memory Management: Garbage Collection ✅
 
 _Sección 9_
 

@@ -41,7 +41,7 @@ const restaurant = {
   },
   orderPasta: function (ing1, ing2, ing3 = 1) {
     console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
+      `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`,
     );
   },
 };
@@ -443,7 +443,7 @@ const books = [
 for (let i = 0; i < books.length; i++) {
   books[i].onlineContent ??
     console.log(
-      `"${books[i].title} provides no data about its online content"`
+      `"${books[i].title} provides no data about its online content"`,
     );
 }
 //TODO Logical Assignments Operators
@@ -930,7 +930,7 @@ const books = [
 // 11.2
 const goodReads = books[0].thirdParty.goodreads;
 for (const [index, value] of Object.values(
-  books[0].thirdParty.goodreads
+  books[0].thirdParty.goodreads,
 ).entries()) {
   entries[index].push(value);
   console.log(`El indexado es ${index}`);
@@ -996,6 +996,31 @@ console.log(`----- Diferencia de matriz -----`);
 // console.log(llaves[0]);
 // console.log(...matriz.values());
 // console.log(...matriz.entries());
+
+//////////////////////////////
+//* New perations to make Sets useful!
+const italianFoods = new Set([
+  'pasta',
+  'gnocchi',
+  'tomatoes',
+  'olive oil',
+  'garlic',
+  'basil',
+]);
+
+const mexicanFoods = new Set([
+  'tortillas',
+  'beans',
+  'rice',
+  'tomatoes',
+  'avocado',
+  'garlic',
+]);
+
+const commonFoods = italianFoods.intersection(mexicanFoods);
+console.log('🚀 ~ commonFoods:', [...commonFoods]);
+
+//////////////////////////////
 
 //? Sets
 
@@ -1244,7 +1269,7 @@ checkMiddleSeat('3E');
 // 1.
 const isbn = books[0].ISBN;
 console.log(
-  `The character 6: ${isbn[1]}, 4: ${isbn[4]}, 9: ${isbn[9]}, 8:${isbn[8]}`
+  `The character 6: ${isbn[1]}, 4: ${isbn[4]}, 9: ${isbn[9]}, 8:${isbn[8]}`,
 );
 // 2.
 const quote =
@@ -1366,7 +1391,7 @@ function logBookTheme(tit) {
     (title.endsWith('systems') && !title.includes('operating'))
   ) {
     console.log(
-      'This book is about some systems, but definitely not about operating systems'
+      'This book is about some systems, but definitely not about operating systems',
     );
   }
 }
@@ -1549,10 +1574,10 @@ const getType = type => type.replaceAll('_', ' ').trim();
 for (const flight of flights.split('+')) {
   const [type, from, to, time] = flight.split(';'); //* Replace solo reemplaza primero, replaceAll todos
   const output = `${getType(type).startsWith('Delayed') ? `🔴 ` : ``}${getType(
-    type
+    type,
   )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
     ';',
-    'h'
+    'h',
   )})`.padStart(36);
   console.log(output);
 }
