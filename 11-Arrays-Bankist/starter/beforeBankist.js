@@ -322,7 +322,7 @@ console.log(light[propiedad]);
 // //*Math.trunc() simplemente elimina la parte decimal, ignorando si el número es positivo o negativo.
 // console.log(Math.floor(-5.2));
 
-// //*Math celi
+// //*Math ceil
 // console.log(Math.ceil(5.1)); //*Lo redondea hacia el entero mas alto, lo contrario a floor
 
 // console.log(movements);

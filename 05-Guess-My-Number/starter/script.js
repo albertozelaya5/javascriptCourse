@@ -191,5 +191,3 @@ document.querySelector(".again").addEventListener("click", ()=>{
   document.querySelector(".message").textContent = "Start guessing..."
   document.querySelector(".score").textContent = score    
 })
-
-  

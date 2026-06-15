@@ -53,3 +53,7 @@ Software developers do a **lot more than just writing code:** maintain bigger pi
 > [!NOTE]
 > Debugging es el proceso de encontrar y corregir errores en un programa, y a estos errores se les conoce como "bugs"
 > ![alt text](image.png)
+
+## Solving CHALLENGE #2 With AI
+
+Ver [script.js](../ai-challenge/script.js)
