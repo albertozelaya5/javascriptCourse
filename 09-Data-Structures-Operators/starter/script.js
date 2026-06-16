@@ -1020,6 +1020,21 @@ const mexicanFoods = new Set([
 const commonFoods = italianFoods.intersection(mexicanFoods);
 console.log('🚀 ~ commonFoods:', [...commonFoods]);
 
+const italianMexicanFusion = italianFoods.union(mexicanFoods);
+console.log('union', italianMexicanFusion);
+console.log([...new Set([...italianFoods, mexicanFoods])]);
+
+const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+
+console.log('Difference', uniqueItalianFoods);
+
+const uniqueItalianAndMexicanFoods =
+  italianFoods.symmetricDifference(mexicanFoods);
+
+console.log(uniqueItalianAndMexicanFoods);
+console.log(italianFoods.isDisjointFrom(mexicanFoods));
+
 //////////////////////////////
 
 //? Sets
@@ -1542,22 +1557,22 @@ GOOD LUCK 😀
 //     return camel;
 //   }
 // }
-const newBoton = document.createElement('button');
-document.body.append(document.createElement('textarea'));
-document.body.append(newBoton);
-newBoton.textContent = 'Enviar';
+// const newBoton = document.createElement('button');
+// document.body.append(document.createElement('textarea'));
+// document.body.append(newBoton);
+// newBoton.textContent = 'Enviar';
 
-document.querySelector('button').addEventListener('click', () => {
-  const text = document.querySelector('textarea').value;
-  const spliteado = text.split('\n');
-  let counter = 1;
-  for (const spl of spliteado) {
-    const [nombre, apellido] = spl.trim().toLowerCase().split('_');
-    const cameleado =
-      nombre + apellido.replace(apellido[0], apellido[0].toUpperCase());
-    console.log(`${cameleado.padEnd(18, ' ')}${'✅'.repeat(counter++)}`);
-  }
-});
+// document.querySelector('button').addEventListener('click', () => {
+//   const text = document.querySelector('textarea').value;
+//   const spliteado = text.split('\n');
+//   let counter = 1;
+//   for (const spl of spliteado) {
+//     const [nombre, apellido] = spl.trim().toLowerCase().split('_');
+//     const cameleado =
+//       nombre + apellido.replace(apellido[0], apellido[0].toUpperCase());
+//     console.log(`${cameleado.padEnd(18, ' ')}${'✅'.repeat(counter++)}`);
+//   }
+// });
 
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
