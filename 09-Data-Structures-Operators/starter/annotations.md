@@ -53,3 +53,5 @@ Luego podemos buscar en la documentation sobre
 - isSupersetOf()
 
 Que también nos darán algún booleano
+
+Todos estos métodos son el ES2025

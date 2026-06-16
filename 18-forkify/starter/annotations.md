@@ -629,11 +629,11 @@ _Sección 8_
 
 _Sección 9_
 
-- New Operations to Make Sets Useful!
+- New Operations to Make Sets Useful! ✅
 
 _Sección 11_
 
-- The New findLast and findLastIndex Methods
+- The New findLast and findLastIndex Methods ✅
 - CHALLENGE #4
 - Array Grouping
 - Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with

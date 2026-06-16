@@ -34,7 +34,7 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
-console.log(accounts);
+// console.log(accounts);
 
 // Elements
 const labelWelcome = document.querySelector('.welcome');
@@ -79,8 +79,8 @@ const displayMovements = function (acc, sort = false) {
     const html = `
         <div class="movements__row">
           <div class="movements__type movements__type--${type}">${
-      i + 1
-    } deposit</div>
+            i + 1
+          } deposit</div>
           <div class="movements__value">${mov}€</div>
         </div>
     `;
@@ -88,7 +88,7 @@ const displayMovements = function (acc, sort = false) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-console.log(containerMovements.innerHTML); //*Devolvera todo el elemento
+// console.log(containerMovements.innerHTML); //*Devolvera todo el elemento
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const deposits = movements.filter(mov => {
@@ -96,7 +96,7 @@ const deposits = movements.filter(mov => {
 });
 //*Los tres, forEach, filter y map tienen valor, i, valorCompleto
 const withdrawals = movements.filter(mov => mov < 0); //*Siempre retornar un booleano en filter
-console.log(`The withdrawals are:`, withdrawals);
+// console.log(`The withdrawals are:`, withdrawals);
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acum, curr, i) => acum + curr, 0);
@@ -121,11 +121,11 @@ const calcDisplaySummary = function (acc) {
       return (deposit * acc.interestRate) / 100;
     })
     .filter((int, i, arr) => {
-      // console.log(arr);
+      // // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  console.log(interest);
+  // console.log(interest);
   labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 //*Usar los menos metodos encadenados posibles
@@ -141,8 +141,8 @@ const createUserName = function (accounts) {
   });
 };
 createUserName(accounts);
-// console.log(accounts);
-// console.log('Las acc: ', accounts);
+// // console.log(accounts);
+// // console.log('Las acc: ', accounts);
 
 const updateUI = function (currentAccount) {
   // Display movements
@@ -162,17 +162,18 @@ btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
   //*Cuando en el form estan los inputs, si se da enter en ellos
   //*Es como si se hiciera click en el button de Submit
-  console.log('Evento Login still not yet');
+  // // console.log('Evento Login still not yet');
 
   currentAccount = accounts.find(function (mov) {
     return mov.userName === inputLoginUsername.value; //*Retorna el valor que pase eso, en este caso un objeto
   });
-  console.log(currentAccount);
+
+  // console.log(accounts);
   //*El valor de la prop debe ser igual a lo puesto, por eso se convierte a Number
   //* Otra manera con el shortCircuiting, si existe eso, y sino nulo
   // currentAccount && currentAccount?.pin === Number(inputLoginPin.value);, no pasa pq la condicion no se cumple
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    // console.log('LOGUEADO PAPA');
+    // // console.log('LOGUEADO PAPA');
     // Display UI and message
     labelWelcome.textContent = `Wlecome back, ${
       currentAccount.owner.split(' ')[0]
@@ -195,9 +196,9 @@ btnTransfer.addEventListener('click', function (e) {
   e.preventDefault(); //*Aun con los hijos se debe prevenir el reinicio
   const amount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(
-    val => val.userName === inputTransferTo.value
+    val => val.userName === inputTransferTo.value,
   );
-  // console.log(amount, receiverAcc);
+  // // console.log(amount, receiverAcc);
 
   inputTransferAmount.value = inputTransferTo.value = '';
   // inputTransferAmount.blur()
@@ -207,17 +208,17 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.balance >= amount &&
     currentAccount?.userName !== receiverAcc.userName
   ) {
-    // console.log('Transfer valid');
+    // // console.log('Transfer valid');
     // Doing de transfer
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
     updateUI(currentAccount);
   }
 });
-// console.log('hola siu'.split(' '));
+// // console.log('hola siu'.split(' '));
 
 // formLogin.addEventListener('keydown', e => {
-//   // console.log(e.key === "e");
+//   // // console.log(e.key === "e");
 // });
 
 btnLoan.addEventListener('click', function (e) {
@@ -235,7 +236,7 @@ btnLoan.addEventListener('click', function (e) {
 
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
-  console.log('DELETE');
+  // console.log('DELETE');
 
   if (
     currentAccount.userName === inputCloseUsername.value &&
@@ -243,14 +244,14 @@ btnClose.addEventListener('click', function (e) {
   ) {
     //*Nos da el indice que pase esta condicion
     const index = accounts.findIndex(
-      acc => acc.userName === currentAccount.userName
+      acc => acc.userName === currentAccount.userName,
     );
     //indexOf(1) //*Solo podemos buscar un elemento existente
-    console.log(index); // Da undefined si no lo encuentra
+    // console.log(index); // Da undefined si no lo encuentra
     //*Posicion que eliminaremos, cuantos eliminaremos
     //* Delete account
     accounts.splice(index, 1);
-    // console.log(accounts);
+    // // console.log(accounts);
 
     // Hide UI
     containerApp.style.opacity = 0;
@@ -263,7 +264,7 @@ btnSort.addEventListener('click', function (e) {
   e.preventDefault();
   displayMovements(currentAccount, !sorted);
   sorted = !sorted;
-  console.log(sorted);
+  // console.log(sorted);
 });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -276,12 +277,12 @@ const movementsUSD = movements.map(mov => {
 });
 //*acepta una funcion, y en el arg de la funcion posee el valor actual
 //*No muta el original, solo devuelve uno nuevo
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
 const movementsUSDfor = []; //*Si moficia el array
 for (const mov of movements) movementsUSDfor.push(mov * euroToUsd);
-console.log(movementsUSDfor);
+// console.log(movementsUSDfor);
 //*En js moderno, se usa mas la programacion funcional
 
 // movements.forEach(function (mov, i) {
@@ -295,7 +296,7 @@ const movementsDescriptions = movements.map((mov, i) => {
   } ${Math.abs(
     //*Movimiento 1 etc, 0 se suma 1 por el 0 based
     //*Si es mayor a 0, si es positivo esto, si es negativo lo otro
-    mov
+    mov,
   )}`;
   // if (mov > 0) {
   //   return `Movement ${i + 1}: You deposited ${mov}`;
@@ -305,17 +306,17 @@ const movementsDescriptions = movements.map((mov, i) => {
 }); //*Se devuelve un arreglo nuevo con esos strings
 
 // movements[1] = 'siu'; //*Altera el valor del arreglo
-console.log(movementsDescriptions);
+// console.log(movementsDescriptions);
 
-// console.log(nuevo);
+// // console.log(nuevo);
 //* Maximum value of the movements, multiplicacion, string, objeto etc
 const max = movements.reduce(
   (acum, curr) => (acum = acum > curr ? acum : curr),
-  movements[0]
+  movements[0],
 );
-console.log(max); //*No poner 0, en max y min, sino poner primer valor
+// console.log(max); //*No poner 0, en max y min, sino poner primer valor
 
-console.log([1, 2, 3, 4, 8].reduce((acum, curr, i, tot) => acum + curr));
+// console.log([1, 2, 3, 4, 8].reduce((acum, curr, i, tot) => acum + curr));
 
 /* ------------------ */
 
@@ -324,17 +325,17 @@ const totalDepositsUSD = movements
   .filter(curr => curr > 0)
   // .map(val => val * euroToUsd)
   .map((val, i, arr) => {
-    //*Si alguno falla, podemos chequear el valor en un console
-    // console.log(arr);
+    //*Si alguno falla, podemos chequear el valor en un // console
+    // // console.log(arr);
     return val * euroToUsd;
   })
   .reduce((acc, mov) => acc + mov, 0)
   .toFixed(2);
-console.log(totalDepositsUSD);
+// console.log(totalDepositsUSD);
 
 //*No olvidarse que filter y map hacen lo mismo que un forEach, recorrer el array, por eso aparecen en consola varios
-/* console.log("Nuevo mapa");
-[1,2,3,4,5].map(val => console.log(val)) */
+/* // console.log("Nuevo mapa");
+[1,2,3,4,5].map(val => // console.log(val)) */
 // [1,2,3,-130] ===
 /*  //*Nos da el index que cumple con la condicion, ideal para el slice (1,2)
     const index = accounts.findIndex(
@@ -343,16 +344,16 @@ console.log(totalDepositsUSD);
 
 //? Some Method
 //*Similar, pero aqui funciona por EQUALITY
-console.log(movements.includes(-130));
+// console.log(movements.includes(-130));
 //*Tambien se puede, pero depende si se ocupa igualdad
-console.log(movements.some(mov => mov === -130));
+// console.log(movements.some(mov => mov === -130));
 //* y aqui por CONDITION
 const anyDeposits = movements.some(mov => mov > 1500); //*Retorna booleano
-console.log(anyDeposits);
+// console.log(anyDeposits);
 
 //? Every Method
 //*Si todos los elementos pasan la condicion
-console.log(account4.movements.every(mov => mov > 0));
+// console.log(account4.movements.every(mov => mov > 0));
 
 // Separate callback
 //* Es lo mismo que: movements.some(mov => deposit(mov));
@@ -402,7 +403,7 @@ const nuevesito = pruebaArr.map(val => {
     valueField: validStatusKey,
   };
 });
-console.log(nuevesito);
+// console.log(nuevesito);
 //? Computed object ejer 1
 const keyName = 'dynamicKey';
 const ejer1 = {
@@ -440,11 +441,11 @@ const sqareNumbers = numbers.reduce((acum, num) => {
   acum[num] = num * num;
   return acum;
 }, {});
-console.log(sqareNumbers);
+// console.log(sqareNumbers);
 
 //sin args esta diseñado para strings
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
-console.log(owners.sort()); //*Ordena alfabeticamente, muta la matriz original
+// console.log(owners.sort()); //*Ordena alfabeticamente, muta la matriz original
 //*Numeros en orden ascendente, si el primero es mayor, positivo adelante, sino negativo atras
 // movements.sort((a, b) => {
 //   if (a > b) return 1;
@@ -457,11 +458,11 @@ movements.sort((a, b) => {
   if (b > a) return 1;
 });
 
-console.log(movements);
+// console.log(movements);
 
 //? More ways of creating and filling Arrays
-console.log([1, 2, 3, 4, 5]);
-console.log(new Array(1, 2, 3, 4, 5));
+// console.log([1, 2, 3, 4, 5]);
+// console.log(new Array(1, 2, 3, 4, 5));
 //*Crear un nuevo array con longitud
 
 // Empty arrays + fill Method
@@ -471,60 +472,194 @@ const x = new Array(7);
 //* Si se pone el primer arg, llena toda la matriz con ese valor
 // x.fill(1)
 x.fill(1, 3, 5);
-console.log(x);
+// console.log(x);
 const arr = [1, 2, 3, 4, 5, 6, 7];
-console.log(arr.slice(1, -1)); //*No se incluye el primero ni el ultimo
+// console.log(arr.slice(1, -1)); //*No se incluye el primero ni el ultimo
 
 arr.fill(23, 2, 6); //*Tambien se puede usar en arrays normales
-console.log(arr);
+// console.log(arr);
 
 // Array from //*Se envia le propiead de lo largo
 const y = Array.from({ length: 7 }, () => 1);
-console.log(y);
+// console.log(y);
 //*Retorna el valor del indice mas 1, o sea que se va recorriendo y sumando
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
-console.log(z);
+// console.log(z);
 /* const hundred = Array.from(
   { length: 100 },
   (mov, i) => `Tirada ${i + 1}: ${Math.trunc(Math.random() * 100)}`
-) */ // console.log(hundred);
+) */ // // console.log(hundred);
 //* Strings, maps, sets son iterables
 // Suponiendo que no se tienen guardados los valores de la interfaz
 //*Selecciona todas las clases
-// console.log(document.querySelectorAll('.movements__value'));
+// // console.log(document.querySelectorAll('.movements__value'));
 //* En vez de poner obj longitud y el mapeado del i, se define el querySelectorAll, y se hace un map como callbackFun, pq es como un map
 labelBalance.addEventListener('click', () => {
   const movementsUI = Array.from(
     //*NodeList
     document.querySelectorAll('.movements__value'), //*Retorna todos los divs de labels, hay que acceder al textContent
-    el => Number(el.textContent.replace('€', ''))
+    el => Number(el.textContent.replace('€', '')),
   );
-  console.log(movementsUI);
+  // console.log(movementsUI);
   const movementsUI2 = [...document.querySelectorAll('.movements__value')]; //*Otra manera, pero habria que hacer mapeado
 });
 //? Cuando usar que metodo, 23 metodos
 //*Primero aplica el recorrido del map, y luego un aplanado
 const newNumbers = [1, 2, 3, null, 4];
 //*Si es vacio lo elimina
-console.log(newNumbers.flatMap(val => (val ? [val * 2] : [])));
+// console.log(newNumbers.flatMap(val => (val ? [val * 2] : [])));
 
 const fruits = ['apple', 'banana', 'cantaloupe', 'blueberries', 'grapefruit'];
 
 const index = fruits.findIndex(fruit => fruit === 'blueberries');
 
-console.log(index); // 3
-console.log(fruits[index]); // blueberries
+// // console.log(index); // 3
+// // console.log(fruits[index]); // blueberries
 
-const keyPressed = document.querySelector('.key__pressed');
+// const keyPressed = document.querySelector('.key__pressed');
 
-keyPressed.addEventListener('keydown', e => {
-  e.key === '@'
-    ? keyPressed.insertAdjacentElement(
-        'afterbegin',
-        '<ul><li>hola</li><li>siu</li></ul>'
-      )
-    : '';
-});
+// keyPressed.addEventListener('keydown', e => {
+//   e.key === '@'
+//     ? keyPressed.insertAdjacentElement(
+//         'afterbegin',
+//         '<ul><li>hola</li><li>siu</li></ul>'
+//       )
+//     : '';
+// });
 
-const nuevoeee = Array.from({ length: 7 }, () => 1);
-console.log(nuevoeee);
+const newArray = Array.from({ length: 7 }, () => 1);
+// // console.log(newArray);
+
+// console.log(movements);
+//* Un retiro es cuando el valor del movimiento es menor a 0
+
+const lastWithdrawal = movements.findLast(mov => mov < 0);
+// console.log('🚀 ~ lastWithdrawal:', lastWithdrawal);
+// console.log(movements.findLastIndex(mov => mov === -650));
+
+//* RETO
+//* vamos a usar ese método `findLastIndex()`
+//* Your latest large movement was X movements ago
+//* large is > 2000
+
+const latestLargeMovementIndex = movements.findLastIndex(
+  mov => Math.abs(mov) > 1000,
+);
+
+// console.log(
+//   `Your latest large movement was ${movements.length - latestLargeMovementIndex} movements ago`,
+// );
+
+/* 
+Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little.
+Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite.
+Eating an okay amount means the dog's current food portion is within a range 10% above and 10% below the recommended portion (see hint).
+
+1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do NOT create a new array, simply loop over the array. Forumla: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
+2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple owners, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
+3. Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
+4. Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
+5. Log to the console whether there is any dog eating EXACTLY the amount of food that is recommended (just true or false)
+6. Log to the console whether there is any dog eating an OKAY amount of food (just true or false)
+7. Create an array containing the dogs that are eating an OKAY amount of food (try to reuse the condition used in 6.)
+8. Create a shallow copy of the dogs array and sort it by recommended food portion in an ascending order (keep in mind that the portions are inside the array's objects)
+
+HINT 1: Use many different tools to solve these challenges, you can use the summary lecture to choose between them 😉
+HINT 2: Being within a range 10% above and below the recommended portion means: current > (recommended * 0.90) && current < (recommended * 1.10). Basically, the current portion should be between 90% and 110% of the recommended portion.
+
+TEST DATA:
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] }
+];
+
+GOOD LUCK 😀
+*/
+
+//* RESOLUTION
+
+//* too much = curFood > recommendedFood
+//* too little = curFood < recommendedFood
+//* okayAmount = curFood > recommendedFood - recommendedFood * 0.1 && curFood < recommendedFood + recommendedFood * 0.1
+
+//* 1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do NOT create a new array, simply loop over the array. Forumla: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+const eatTooMuch = (curFood, recommendedFood) =>
+  curFood > Number.parseFloat(recommendedFood);
+const eatTooLittle = (curFood, recommendedFood) =>
+  curFood < Number.parseFloat(recommendedFood);
+
+const eatOkayAmount = (curFood, recommendedFood) =>
+  curFood > recommendedFood * 0.9 && curFood < recommendedFood * 1.1;
+
+//* 1kg = 2.2
+const librasToKilos = libra => libra / 2.2;
+
+for (const dog of dogs) {
+  dog.recommendedFood = `${(librasToKilos(dog.weight) ** 0.75 * 28).toFixed(2)} grams`;
+}
+
+// console.log('Ej 1:', dogs);
+
+const eatLittleMuch = function (curFood, recommendedFood) {
+  const recommendedFoodFixed = Number.parseFloat(recommendedFood);
+  if (curFood > recommendedFoodFixed) return 'too much';
+  if (curFood < recommendedFoodFixed) return 'too little';
+};
+
+//* 2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple owners, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
+
+const saraDog = dogs.find(dog => dog.owners.includes('Sarah'));
+const result = `Sarah's dog is eating ${eatLittleMuch(saraDog.curFood, saraDog.recommendedFood)}`;
+
+// console.log(result);
+
+//* 3. Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
+const ownersEatTooMuch = dogs
+  .filter(dog => eatTooMuch(dog.curFood, dog.recommendedFood))
+  .map(dog => dog.owners)
+  .flat();
+
+const ownersEatTooLittle = dogs
+  .filter(dog => eatTooLittle(dog.curFood, dog.recommendedFood))
+  .map(dog => dog.owners)
+  .flat();
+
+// console.log(ownersEatTooMuch, ownersEatTooLittle);
+//* 4. Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
+
+const ownersJoined = owners => {
+  if (owners.length === 0) return;
+  return owners.slice(0, -1).join(', ') + ` and ${owners.at(-1)}`;
+};
+
+const resultSentence = (owners, message) =>
+  ownersJoined(owners)
+    ? ownersJoined(owners) + message
+    : 'There is no dogs or owners';
+
+// console.log(resultSentence(ownersEatTooMuch, ' dogs eat too much!'));
+// console.log(resultSentence(ownersEatTooLittle, ' dogs eat too little!'));
+
+//* 5. Log to the console whether there is any dog eating EXACTLY the amount of food that is recommended (just true or false)
+const dogEatingExactlyAmountFood = dogs.some(
+  dog => dog.curFood === dog.recommendedFood,
+);
+// console.log(dogEatingExactlyAmountFood);
+
+//* 6. Log to the console whether there is any dog eating an OKAY amount of food (just true or false)
+const dogEatingOkayAmountFood = dogs.some(dog =>
+  eatOkayAmount(dog.curFood, dog.recommendedFood),
+);
+// console.log(dogEatingOkayAmountFood);
+
+//* 7. Create an array containing the dogs that are eating an OKAY amount of food (try to reuse the condition used in 6.)

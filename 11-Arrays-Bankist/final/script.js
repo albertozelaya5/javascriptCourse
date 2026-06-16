@@ -77,8 +77,8 @@ const displayMovements = function (movements, sort = false) {
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+          i + 1
+        } ${type}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
@@ -145,7 +145,7 @@ btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
+    acc => acc.username === inputLoginUsername.value,
   );
   console.log(currentAccount);
 
@@ -169,7 +169,7 @@ btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(
-    acc => acc.username === inputTransferTo.value
+    acc => acc.username === inputTransferTo.value,
   );
   inputTransferAmount.value = inputTransferTo.value = '';
 
@@ -211,7 +211,7 @@ btnClose.addEventListener('click', function (e) {
     Number(inputClosePin.value) === currentAccount.pin
   ) {
     const index = accounts.findIndex(
-      acc => acc.username === currentAccount.username
+      acc => acc.username === currentAccount.username,
     );
     console.log(index);
     // .indexOf(23)
@@ -689,7 +689,7 @@ const { deposits, withdrawals } = accounts
       sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
       return sums;
     },
-    { deposits: 0, withdrawals: 0 }
+    { deposits: 0, withdrawals: 0 },
   );
 
 console.log(deposits, withdrawals);
@@ -720,7 +720,7 @@ console.log(convertTitleCase('and here is another title with an EXAMPLE'));
 /* 
 Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little.
 Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite.
-Eating an okay amount means the dog's current food portion is within a range 10% above and 10% below the recommended portion (see hint).
+Eating an okay amount means the dog's current food portion is within a range 10% above and 10% below the recommended portion (see hint o ver sugerencia).
 
 1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do NOT create a new array, simply loop over the array. Forumla: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
 2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple owners, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
