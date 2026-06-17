@@ -634,9 +634,9 @@ _Sección 9_
 _Sección 11_
 
 - The New findLast and findLastIndex Methods ✅
-- CHALLENGE #4
-- Array Grouping
-- Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with
+- CHALLENGE #4 ✅
+- Array Grouping ✅
+- Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with ✅
 
 _Sección 12_
 

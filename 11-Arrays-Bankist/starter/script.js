@@ -10,6 +10,7 @@ const account1 = {
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
+  type: 'premium',
 };
 
 const account2 = {
@@ -17,6 +18,7 @@ const account2 = {
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
+  type: 'standard',
 };
 
 const account3 = {
@@ -24,6 +26,7 @@ const account3 = {
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
   pin: 3333,
+  type: 'premium',
 };
 
 const account4 = {
@@ -31,6 +34,7 @@ const account4 = {
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
+  type: 'basic',
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -593,10 +597,8 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
-const eatTooMuch = (curFood, recommendedFood) =>
-  curFood > Number.parseFloat(recommendedFood);
-const eatTooLittle = (curFood, recommendedFood) =>
-  curFood < Number.parseFloat(recommendedFood);
+const eatTooMuch = (curFood, recommendedFood) => curFood > recommendedFood;
+const eatTooLittle = (curFood, recommendedFood) => curFood < recommendedFood;
 
 const eatOkayAmount = (curFood, recommendedFood) =>
   curFood > recommendedFood * 0.9 && curFood < recommendedFood * 1.1;
@@ -605,13 +607,17 @@ const eatOkayAmount = (curFood, recommendedFood) =>
 const librasToKilos = libra => libra / 2.2;
 
 for (const dog of dogs) {
-  dog.recommendedFood = `${(librasToKilos(dog.weight) ** 0.75 * 28).toFixed(2)} grams`;
+  // dog.recommendedFood = `${(librasToKilos(dog.weight) ** 0.75 * 28).toFixed(2)} grams`;
+  const recFoodFormula = (dog.weight ** 0.75 * 28).toFixed(2);
+  dog.recommendedFood = +recFoodFormula;
+  dog.weightInKilos = `${dog.weight} kg`;
+  dog.recFoodInGrams = `${recFoodFormula} grams`;
 }
 
 // console.log('Ej 1:', dogs);
 
 const eatLittleMuch = function (curFood, recommendedFood) {
-  const recommendedFoodFixed = Number.parseFloat(recommendedFood);
+  const recommendedFoodFixed = recommendedFood;
   if (curFood > recommendedFoodFixed) return 'too much';
   if (curFood < recommendedFoodFixed) return 'too little';
 };
@@ -663,3 +669,50 @@ const dogEatingOkayAmountFood = dogs.some(dog =>
 // console.log(dogEatingOkayAmountFood);
 
 //* 7. Create an array containing the dogs that are eating an OKAY amount of food (try to reuse the condition used in 6.)
+const dogsEatingOkayFood = dogs.filter(dog =>
+  eatOkayAmount(dog.curFood, dog.recommendedFood),
+);
+
+//* 8. Create a shallow copy of the dogs array and sort it by recommended food portion in an ascending order (keep in mind that the portions are inside the array's objects)
+
+//? El sort() solo, modifica el array original
+const dogsSorted = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+
+//? O también con toSorted(), que crea una copia del array
+// const dogsSorted = dogs.toSorted(
+//   (a, b) => a.recommendedFood - b.recommendedFood,
+// );
+// console.log('🚀 ~ dogsSorted:', dogsSorted);
+
+// console.log(movements);
+
+const groupedMovements = Object.groupBy(movements, movement =>
+  movement > 0 ? 'deposits' : 'withdrawals',
+);
+
+// console.log('🚀 ~ groupedMovements:', groupedMovements);
+
+const groupedByActivity = Object.groupBy(accounts, account => {
+  const movementCount = account.movements.length;
+
+  if (movementCount >= 8) return 'very active';
+  if (movementCount >= 4) return 'active';
+  if (movementCount >= 1) return 'moderate';
+  return 'inactive';
+});
+// console.log('🚀 ~ groupedByActivity:', groupedByActivity);
+
+const groupedAccounts = Object.groupBy(accounts, ({ type }) => type);
+// console.log('🚀 ~ groupedAccounts:', groupedAccounts);
+
+// console.log(movements);
+const reversedMov = movements.toReversed();
+// console.log(reversedMov);
+
+// toSorted (sort), toSpliced (splice)
+// movements[1] = 2000;
+const newMovements = movements.with(1, 2000);
+
+// console.log(movements, newMovements);
