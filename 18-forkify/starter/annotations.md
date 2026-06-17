@@ -640,8 +640,8 @@ _Sección 11_
 
 _Sección 12_
 
-- Fixing a Sorting Bug
+- Fixing a Sorting Bug ✅
 
 _Sección 13_
 
-- Fixing a Small Scrolling Bug
+- Fixing a Small Scrolling Bug ✅
